@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>452432549178-22ln7qkac75hpec97empfcvs8bctn4eu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.452432549178-22ln7qkac75hpec97empfcvs8bctn4eu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCoTLSlm4WDDoptTBHmbSlrTXjW_163MBk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>452432549178</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>NewWaveComputers.Due-It</string>
+	<key>PROJECT_ID</key>
+	<string>due-it-2b188</string>
+	<key>STORAGE_BUCKET</key>
+	<string>due-it-2b188.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:452432549178:ios:aba9f9d0bcb8b033c6ac03</string>
+</dict>
+</plist>
