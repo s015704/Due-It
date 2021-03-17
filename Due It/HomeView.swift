@@ -17,9 +17,6 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-         
-               
-            
             Button(action: {
                 try! Auth.auth().signOut()
                 self.userInfo.configureFirebaseStateDidChange()
