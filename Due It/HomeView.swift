@@ -17,21 +17,9 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 200, height: 200, alignment: .center)
-                .clipped()
-            Button(action: {
-                
-            }) {
-                Text("Change Image")
-                    .frame(width: 200)
-                    .padding(.vertical, 15)
-                    .background(Color.green)
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
-            }
+         
+               
+            
             Button(action: {
                 try! Auth.auth().signOut()
                 self.userInfo.configureFirebaseStateDidChange()
