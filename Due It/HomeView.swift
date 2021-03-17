@@ -45,8 +45,6 @@ struct HomeView: View {
                     .background(Color.green)
                     .cornerRadius(8)
                     .foregroundColor(.white)
-            }.sheet(isPresented: $showingImagePicker, onDismiss: saveImage) {
-                ImagePicker(image: self.$inputImage)
             }
         }
     }
