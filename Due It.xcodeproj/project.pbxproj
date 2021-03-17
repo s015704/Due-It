@@ -3,12 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		16854EAF86FEAD658B97C4CB /* Pods_Due_It.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4791DFE16FC2CB872A701C7 /* Pods_Due_It.framework */; };
 		2F60AB9A260120660035F1B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F60AB99260120660035F1B7 /* GoogleService-Info.plist */; };
+		423FB8B026027C3700C61CFC /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8AE26027C3700C61CFC /* UserInfo.swift */; };
+		423FB8B126027C3700C61CFC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8AF26027C3700C61CFC /* UserViewModel.swift */; };
+		423FB8B726027C4D00C61CFC /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B226027C4C00C61CFC /* LogInView.swift */; };
+		423FB8B826027C4D00C61CFC /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B326027C4C00C61CFC /* ForgotPasswordView.swift */; };
+		423FB8B926027C4D00C61CFC /* SignInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B426027C4C00C61CFC /* SignInWithEmailView.swift */; };
+		423FB8BA26027C4D00C61CFC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B526027C4D00C61CFC /* SignUpView.swift */; };
+		423FB8BB26027C4D00C61CFC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B626027C4D00C61CFC /* HomeView.swift */; };
 		428EBA3525FA75BE0053DAD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428EBA3425FA75BE0053DAD1 /* AppDelegate.swift */; };
 		428EBA3725FA75BE0053DAD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428EBA3625FA75BE0053DAD1 /* SceneDelegate.swift */; };
 		428EBA3925FA75BE0053DAD1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428EBA3825FA75BE0053DAD1 /* ContentView.swift */; };
@@ -38,6 +45,13 @@
 
 /* Begin PBXFileReference section */
 		2F60AB99260120660035F1B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		423FB8AE26027C3700C61CFC /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		423FB8AF26027C3700C61CFC /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		423FB8B226027C4C00C61CFC /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		423FB8B326027C4C00C61CFC /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		423FB8B426027C4C00C61CFC /* SignInWithEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithEmailView.swift; sourceTree = "<group>"; };
+		423FB8B526027C4D00C61CFC /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		423FB8B626027C4D00C61CFC /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		428EBA3125FA75BE0053DAD1 /* Due It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Due It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		428EBA3425FA75BE0053DAD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428EBA3625FA75BE0053DAD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +133,13 @@
 				428EBA3425FA75BE0053DAD1 /* AppDelegate.swift */,
 				428EBA3625FA75BE0053DAD1 /* SceneDelegate.swift */,
 				428EBA3825FA75BE0053DAD1 /* ContentView.swift */,
+				423FB8B326027C4C00C61CFC /* ForgotPasswordView.swift */,
+				423FB8B626027C4D00C61CFC /* HomeView.swift */,
+				423FB8B226027C4C00C61CFC /* LogInView.swift */,
+				423FB8B426027C4C00C61CFC /* SignInWithEmailView.swift */,
+				423FB8B526027C4D00C61CFC /* SignUpView.swift */,
+				423FB8AE26027C3700C61CFC /* UserInfo.swift */,
+				423FB8AF26027C3700C61CFC /* UserViewModel.swift */,
 				2F60AB99260120660035F1B7 /* GoogleService-Info.plist */,
 				428EBA3A25FA75C10053DAD1 /* Assets.xcassets */,
 				428EBA3F25FA75C10053DAD1 /* LaunchScreen.storyboard */,
@@ -160,7 +181,6 @@
 				FFC1886B3BB0E87F61DFB326 /* Pods-Due It.debug.xcconfig */,
 				849989074478384DE1F6B896 /* Pods-Due It.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -340,8 +360,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423FB8B726027C4D00C61CFC /* LogInView.swift in Sources */,
+				423FB8B826027C4D00C61CFC /* ForgotPasswordView.swift in Sources */,
+				423FB8B026027C3700C61CFC /* UserInfo.swift in Sources */,
+				423FB8BB26027C4D00C61CFC /* HomeView.swift in Sources */,
+				423FB8B926027C4D00C61CFC /* SignInWithEmailView.swift in Sources */,
 				428EBA3525FA75BE0053DAD1 /* AppDelegate.swift in Sources */,
 				428EBA3725FA75BE0053DAD1 /* SceneDelegate.swift in Sources */,
+				423FB8B126027C3700C61CFC /* UserViewModel.swift in Sources */,
+				423FB8BA26027C4D00C61CFC /* SignUpView.swift in Sources */,
 				428EBA3925FA75BE0053DAD1 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
