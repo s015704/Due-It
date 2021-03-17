@@ -14,9 +14,6 @@ import FirebaseDatabase
 struct HomeView: View {
     
     @EnvironmentObject var userInfo : UserInfo
-    @State private var image : Image = Image("user")
-    @State private var showingImagePicker = false
-    @State private var inputImage : UIImage?
     
     var body: some View {
         VStack {
@@ -49,29 +46,6 @@ struct HomeView: View {
         }
     }
     
-    func saveImage() {
-        guard let input = inputImage else {return}
-        image = Image(uiImage: input)
-        
-        // reference to the current user in firebase
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        
-        // reference to storage object
-        let storage = Storage.storage().reference().child("user/\(uid)")
-        
-        // images must be saved as data objects -> convert and compress
-        guard let imageData = input.jpegData(compressionQuality: 0.75) else {return}
-        
-        storage.putData(imageData, metadata: StorageMetadata()) { (metadata, error) in
-            if let _ = metadata {
-                storage.downloadURL { (url, error) in
-                    guard let imageURL = url else {return}
-                    
-                    let database = Database.database().reference().child("users/\(uid)")
-                }
-            }
-        }
-    }
 }
 
 
