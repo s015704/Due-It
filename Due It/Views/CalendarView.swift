@@ -10,7 +10,8 @@ import SwiftUI
 
 struct CalendarView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        let calendar = CalendarView(frame: CGRectMake(0, 0, CGRectGetWidth(view.frame), 320))
+        view.addSubview(calendar)
     }
 }
 
