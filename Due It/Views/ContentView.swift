@@ -19,11 +19,30 @@ struct ContentView: View {
             } else if userInfo.isUserAuthenticated == .signedOut {
                 LogInView()
             } else {
-                HomeView()
+                //HomeView()
+                TabView {
+                    CalendarView()
+                        .tabItem({
+                            Image(systemName: "calendar")
+                            Text("Calendar")
+                        }).tag(0)
+                    HomeView()
+                        .tabItem({
+                            Image(systemName: "house")
+                            Text("Assignments")
+                        }).tag(1)
+                    SettingsView()
+                        .tabItem({
+                            Image(systemName: "gear")
+                            Text("Settings")
+                        }).tag(2)
+                }
             }
         }.onAppear() {
             self.userInfo.configureFirebaseStateDidChange()
         }
+        
+        
     }
 }
 

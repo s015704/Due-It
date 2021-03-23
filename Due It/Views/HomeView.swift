@@ -17,17 +17,18 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Button(action: {
-                try! Auth.auth().signOut()
-                self.userInfo.configureFirebaseStateDidChange()
-            }) {
-                Text("Log Out")
-                    .frame(width: 200)
-                    .padding(.vertical, 15)
-                    .background(Color.green)
-                    .cornerRadius(8)
-                    .foregroundColor(.white)
-            }
+            
+//            Button(action: {
+//                try! Auth.auth().signOut()
+//                self.userInfo.configureFirebaseStateDidChange()
+//            }) {
+//                Text("Log Out")
+//                    .frame(width: 200)
+//                    .padding(.vertical, 15)
+//                    .background(Color.green)
+//                    .cornerRadius(8)
+//                    .foregroundColor(.white)
+//            }
         }
     }
     

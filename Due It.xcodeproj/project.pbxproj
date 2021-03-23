@@ -16,6 +16,8 @@
 		423FB8B926027C4D00C61CFC /* SignInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B426027C4C00C61CFC /* SignInWithEmailView.swift */; };
 		423FB8BA26027C4D00C61CFC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B526027C4D00C61CFC /* SignUpView.swift */; };
 		423FB8BB26027C4D00C61CFC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423FB8B626027C4D00C61CFC /* HomeView.swift */; };
+		425C384A260A3AA500713A3B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425C3849260A3AA500713A3B /* SettingsView.swift */; };
+		425C384C260A3AB800713A3B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425C384B260A3AB800713A3B /* CalendarView.swift */; };
 		428EBA3525FA75BE0053DAD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428EBA3425FA75BE0053DAD1 /* AppDelegate.swift */; };
 		428EBA3725FA75BE0053DAD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428EBA3625FA75BE0053DAD1 /* SceneDelegate.swift */; };
 		428EBA3925FA75BE0053DAD1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428EBA3825FA75BE0053DAD1 /* ContentView.swift */; };
@@ -52,6 +54,8 @@
 		423FB8B426027C4C00C61CFC /* SignInWithEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithEmailView.swift; sourceTree = "<group>"; };
 		423FB8B526027C4D00C61CFC /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		423FB8B626027C4D00C61CFC /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		425C3849260A3AA500713A3B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		425C384B260A3AB800713A3B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		428EBA3125FA75BE0053DAD1 /* Due It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Due It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		428EBA3425FA75BE0053DAD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428EBA3625FA75BE0053DAD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		425C384D260A3ACE00713A3B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				428EBA3825FA75BE0053DAD1 /* ContentView.swift */,
+				425C3849260A3AA500713A3B /* SettingsView.swift */,
+				425C384B260A3AB800713A3B /* CalendarView.swift */,
+				423FB8B626027C4D00C61CFC /* HomeView.swift */,
+				423FB8B226027C4C00C61CFC /* LogInView.swift */,
+				423FB8B526027C4D00C61CFC /* SignUpView.swift */,
+				423FB8B426027C4C00C61CFC /* SignInWithEmailView.swift */,
+				423FB8B326027C4C00C61CFC /* ForgotPasswordView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		425C384E260A3AED00713A3B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				423FB8AE26027C3700C61CFC /* UserInfo.swift */,
+				423FB8AF26027C3700C61CFC /* UserViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		428EBA2825FA75BE0053DAD1 = {
 			isa = PBXGroup;
 			children = (
@@ -132,14 +160,8 @@
 			children = (
 				428EBA3425FA75BE0053DAD1 /* AppDelegate.swift */,
 				428EBA3625FA75BE0053DAD1 /* SceneDelegate.swift */,
-				428EBA3825FA75BE0053DAD1 /* ContentView.swift */,
-				423FB8B326027C4C00C61CFC /* ForgotPasswordView.swift */,
-				423FB8B626027C4D00C61CFC /* HomeView.swift */,
-				423FB8B226027C4C00C61CFC /* LogInView.swift */,
-				423FB8B426027C4C00C61CFC /* SignInWithEmailView.swift */,
-				423FB8B526027C4D00C61CFC /* SignUpView.swift */,
-				423FB8AE26027C3700C61CFC /* UserInfo.swift */,
-				423FB8AF26027C3700C61CFC /* UserViewModel.swift */,
+				425C384D260A3ACE00713A3B /* Views */,
+				425C384E260A3AED00713A3B /* Model */,
 				2F60AB99260120660035F1B7 /* GoogleService-Info.plist */,
 				428EBA3A25FA75C10053DAD1 /* Assets.xcassets */,
 				428EBA3F25FA75C10053DAD1 /* LaunchScreen.storyboard */,
@@ -362,6 +384,7 @@
 			files = (
 				423FB8B726027C4D00C61CFC /* LogInView.swift in Sources */,
 				423FB8B826027C4D00C61CFC /* ForgotPasswordView.swift in Sources */,
+				425C384C260A3AB800713A3B /* CalendarView.swift in Sources */,
 				423FB8B026027C3700C61CFC /* UserInfo.swift in Sources */,
 				423FB8BB26027C4D00C61CFC /* HomeView.swift in Sources */,
 				423FB8B926027C4D00C61CFC /* SignInWithEmailView.swift in Sources */,
@@ -370,6 +393,7 @@
 				423FB8B126027C3700C61CFC /* UserViewModel.swift in Sources */,
 				423FB8BA26027C4D00C61CFC /* SignUpView.swift in Sources */,
 				428EBA3925FA75BE0053DAD1 /* ContentView.swift in Sources */,
+				425C384A260A3AA500713A3B /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
