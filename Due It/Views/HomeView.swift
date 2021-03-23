@@ -17,6 +17,7 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
+            Text("Hello World")
             
 //            Button(action: {
 //                try! Auth.auth().signOut()
