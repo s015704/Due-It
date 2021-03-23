@@ -8,10 +8,17 @@
 
 import SwiftUI
 
-struct CalendarView: View {
+
+struct ClndrView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+       
+        VStack{
+        
+        CalendarView(frame: CGRectMake(0, 0, CGRectGetWidth(iew.frame), 320))
+        view.addSubview(calendar)
+        }
     }
+        
 }
 
 struct CalendarView_Previews: PreviewProvider {
