@@ -21,7 +21,7 @@ struct ContentView: View {
             } else {
                 //HomeView()
                 TabView {
-                    CalendarView()
+                    ClndrView()
                         .tabItem({
                             Image(systemName: "calendar")
                             Text("Calendar")
