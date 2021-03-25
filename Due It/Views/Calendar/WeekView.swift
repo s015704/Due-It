@@ -5,7 +5,7 @@
 //  Created by Alexander Bullard (student LM) on 3/24/21.
 //  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
 //
-
+/*
 import SwiftUI
 
 struct WeekView<DateView>: View where DateView: View {
@@ -52,3 +52,4 @@ struct WeekView_Previews: PreviewProvider {
         WeekView()
     }
 }
+*/

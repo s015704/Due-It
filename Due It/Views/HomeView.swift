@@ -17,8 +17,7 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Text("Hello World")
-            
+            AddButtonView()
 //            Button(action: {
 //                try! Auth.auth().signOut()
 //                self.userInfo.configureFirebaseStateDidChange()

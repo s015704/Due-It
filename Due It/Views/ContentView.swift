@@ -42,7 +42,6 @@ struct ContentView: View {
             self.userInfo.configureFirebaseStateDidChange()
         }
         
-        
     }
 }
 
