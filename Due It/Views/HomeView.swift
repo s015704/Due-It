@@ -14,11 +14,11 @@ import FirebaseDatabase
 struct HomeView: View {
     
     @EnvironmentObject var userInfo : UserInfo
-    @Binding var showSheet: Bool
+    @Binding var showAAV: Bool
     
     var body: some View {
         Button(action: {
-            self.showSheet = true
+            self.showAAV = true
         }) {
             Image(systemName: "plus.circle.fill").scaleEffect(4)
         }.foregroundColor(Color("regular1"))
@@ -43,6 +43,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(showSheet: .constant(true))
+        HomeView(showAAV: .constant(true))
     }
 }

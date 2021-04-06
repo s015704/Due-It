@@ -21,10 +21,10 @@ class Assignment {
     var isCompleted : Bool
     
     init() {
-        name = "Homework"
-        dueDate = "Tomorrow"
-        description = "Finish the Swift app"
-        course = "Comp Sci!"
+        name = ""
+        dueDate = ""
+        description = ""
+        course = ""
         estTime = 1
         priority = .high
         isCompleted = false
@@ -42,5 +42,17 @@ class Assignment {
     
     func complete() {
         isCompleted = true
+    }
+    
+    func isEmpty(_field:String) -> Bool {
+        return _field.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    
+    var validNameText: String {
+        if !isEmpty(_field: name) {
+            return ""
+        } else {
+            return "Enter the assignment name"
+        }
     }
 }

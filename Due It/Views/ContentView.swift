@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var userInfo : UserInfo
-    @State var showSheet = false
+    @State var showAAV = false
     
     var body: some View {
         Group {
@@ -26,7 +26,7 @@ struct ContentView: View {
                             Image(systemName: "calendar")
                             Text("Calendar")
                         }).tag(0)
-                    HomeView(showSheet: $showSheet).sheet(isPresented: $showSheet) {
+                    HomeView(showAAV: $showAAV).sheet(isPresented: $showAAV) {
                         AddAssignmentView()
                     }
                     .tabItem({

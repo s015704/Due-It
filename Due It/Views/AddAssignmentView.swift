@@ -9,12 +9,49 @@
 import SwiftUI
 
 struct AddAssignmentView: View {
+    
+    @State var assignment: Assignment = Assignment()
+    
     var body: some View {
-        
-        
-        
-        Text("")
+        NavigationView {
+        VStack {
+            Group {
+                VStack(alignment: .leading) {
+                    TextField("Assignment Name", text: self.$assignment.name).autocapitalization(.words)
+                    if !assignment.validNameText.isEmpty {
+                        Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
+                    }
+                }
+                VStack(alignment: .leading) {
+                    TextField("Description", text: self.$assignment.description).autocapitalization(.words)
+                }
+            }.frame(width: 300)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+           /* VStack(spacing: 20 ) {
+                Button(action: {
+                    Auth.auth().createUser(withEmail: self.user.email, password: self.user.password, completion: { (user, error) in
+                        self.userInfo.configureFirebaseStateDidChange()
+                        self.presentationMode.wrappedValue.dismiss()
+                    })
+                }) {
+                    Text("Register")
+                        .frame(width: 200)
+                        .padding(.vertical, 15)
+                        .background(Color.green)
+                        .cornerRadius(8)
+                        .foregroundColor(.white)
+                        .opacity(user.isSignInComplete ? 1 : 0.75)
+                }
+                .disabled(!user.isSignInComplete)
+                Spacer()
+            }.padding()*/
+        }.padding(.top)
+            .navigationBarTitle("Sign Up", displayMode: .inline)
+            .navigationBarItems(trailing: Button("Dismiss") {
+                //self.presentationMode.wrappedValue.dismiss()
+            })
     }
+}
 }
 
 struct AddAssignmentView_Previews: PreviewProvider {
