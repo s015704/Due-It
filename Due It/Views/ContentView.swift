@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var userInfo : UserInfo
+    @State var showSheet = false
     
     var body: some View {
         Group {
@@ -19,18 +20,19 @@ struct ContentView: View {
             } else if userInfo.isUserAuthenticated == .signedOut {
                 LogInView()
             } else {
-                //HomeView()
                 TabView {
                     CalendarView()
                         .tabItem({
                             Image(systemName: "calendar")
                             Text("Calendar")
                         }).tag(0)
-                    HomeView()
-                        .tabItem({
-                            Image(systemName: "house")
-                            Text("Assignments")
-                        }).tag(1)
+                    HomeView(showSheet: $showSheet).sheet(isPresented: $showSheet) {
+                        AddAssignmentView()
+                    }
+                    .tabItem({
+                        Image(systemName: "house")
+                        Text("Assignments")
+                    }).tag(1)
                     SettingsView()
                         .tabItem({
                             Image(systemName: "gear")
@@ -42,8 +44,10 @@ struct ContentView: View {
             self.userInfo.configureFirebaseStateDidChange()
         }
         
+        
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

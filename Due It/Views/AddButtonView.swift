@@ -9,9 +9,12 @@
 import SwiftUI
 
 struct AddButtonView: View {
+    
+    @State var showSheet : Bool
+    
     var body: some View {
         Button(action: {
-            // code!
+            self.showSheet = true
         }) {
             Image(systemName: "plus.circle.fill").scaleEffect(4)
         }.foregroundColor(Color("regular1"))

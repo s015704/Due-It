@@ -127,8 +127,8 @@
 				42CD6962260D099600C2420E /* Firebase Login */,
 				42CD6961260D097900C2420E /* Calendar */,
 				428EBA3825FA75BE0053DAD1 /* ContentView.swift */,
-				425C3849260A3AA500713A3B /* SettingsView.swift */,
 				423FB8B626027C4D00C61CFC /* HomeView.swift */,
+				425C3849260A3AA500713A3B /* SettingsView.swift */,
 				42CD6965260D09F800C2420E /* AddButtonView.swift */,
 				42DE188B261CB03A00A8D1CB /* AddAssignmentView.swift */,
 			);

@@ -14,27 +14,27 @@ import FirebaseDatabase
 struct HomeView: View {
     
     @EnvironmentObject var userInfo : UserInfo
+    @Binding var showSheet: Bool
     
     var body: some View {
+        Button(action: {
+            self.showSheet = true
+        }) {
+            Image(systemName: "plus.circle.fill").scaleEffect(4)
+        }.foregroundColor(Color("regular1"))
         
-        @State var showSheet = false
         
-       // VStack {
-            //AddButtonView()
-            
-            
-            
-            //            Button(action: {
-            //                try! Auth.auth().signOut()
-            //                self.userInfo.configureFirebaseStateDidChange()
-            //            }) {
-            //                Text("Log Out")
-            //                    .frame(width: 200)
-            //                    .padding(.vertical, 15)
-            //                    .background(Color.green)
-            //                    .cornerRadius(8)
-            //                    .foregroundColor(.white)
-            //            }
+        //            Button(action: {
+        //                try! Auth.auth().signOut()
+        //                self.userInfo.configureFirebaseStateDidChange()
+        //            }) {
+        //                Text("Log Out")
+        //                    .frame(width: 200)
+        //                    .padding(.vertical, 15)
+        //                    .background(Color.green)
+        //                    .cornerRadius(8)
+        //                    .foregroundColor(.white)
+        //            }
         //}
     }
     
@@ -43,6 +43,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(showSheet: .constant(true))
     }
 }
