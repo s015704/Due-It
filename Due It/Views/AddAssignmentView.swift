@@ -11,6 +11,7 @@ import SwiftUI
 struct AddAssignmentView: View {
     
     @State var assignment: Assignment = Assignment()
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
@@ -55,7 +56,7 @@ struct AddAssignmentView: View {
         }.padding(.top)
             .navigationBarTitle("Sign Up", displayMode: .inline)
             .navigationBarItems(trailing: Button("Dismiss") {
-                //self.presentationMode.wrappedValue.dismiss()
+                self.presentationMode.wrappedValue.dismiss()
             })
     }
 }
