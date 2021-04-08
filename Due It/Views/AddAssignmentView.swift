@@ -25,6 +25,13 @@ struct AddAssignmentView: View {
                 VStack(alignment: .leading) {
                     TextField("Description", text: self.$assignment.description).autocapitalization(.words)
                 }
+                VStack(alignment: .leading) {
+                    TextField("", text: self.$assignment.description).autocapitalization(.words)
+                    if !assignment.validCourseText.isEmpty {
+                        Text(assignment.validCourseText).font(.caption).foregroundColor(Color("highlight"))
+                    }
+                }
+               
             }.frame(width: 300)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
            /* VStack(spacing: 20 ) {

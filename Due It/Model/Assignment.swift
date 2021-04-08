@@ -55,4 +55,12 @@ class Assignment {
             return "Enter the assignment name"
         }
     }
+    
+    var validCourseText: String {
+        if !isEmpty(_field: course) {
+            return ""
+        } else {
+            return "Enter a course"
+        }
+    }
 }
