@@ -19,20 +19,24 @@ struct AddAssignmentView: View {
             Group {
                 VStack(alignment: .leading) {
                     TextField("Assignment Name", text: self.$assignment.name).autocapitalization(.words)
-                    if !assignment.validNameText.isEmpty {
-                        Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
-                    }
+                    //if !assignment.validNameText.isEmpty {
+                      //  Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
+                    //}
                 }
                 VStack(alignment: .leading) {
                     TextField("Description", text: self.$assignment.description).autocapitalization(.words)
                 }
                 VStack(alignment: .leading) {
-                    TextField("", text: self.$assignment.description).autocapitalization(.words)
-                    if !assignment.validCourseText.isEmpty {
-                        Text(assignment.validCourseText).font(.caption).foregroundColor(Color("highlight"))
-                    }
+                    TextField("Course", text: self.$assignment.course).autocapitalization(.words)
                 }
-               
+                VStack(alignment: .leading) {
+                    DatePicker("Due Date", selection: $assignment.dueDate, in: Date()...)
+                        //.aspectRatio(0.1, contentMode: .fit)
+                }
+                VStack(alignment: .leading) {
+                    DatePicker("Estimated Time", selection: $assignment.estTime, in: Date()..., displayedComponents: .hourAndMinute)
+                }
+  
             }.frame(width: 300)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
            /* VStack(spacing: 20 ) {

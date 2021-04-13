@@ -13,24 +13,24 @@ class Assignment {
     enum priorityLevel {case high, medium, low}
     
     var name : String
-    var dueDate : String
+    var dueDate : Date
     var description : String
     var course : String
-    var estTime : Double
+    var estTime : Date
     var priority : priorityLevel
     var isCompleted : Bool
     
     init() {
         name = ""
-        dueDate = ""
+        dueDate = Date()
         description = ""
         course = ""
-        estTime = 1
+        estTime = Date()
         priority = .high
         isCompleted = false
     }
     
-    init(name : String, dueDate : String, description : String, course : String, estTime : Double, priority : priorityLevel, isCompleted : Bool) {
+    init(name : String, dueDate : Date, description : String, course : String, estTime : Date, priority : priorityLevel, isCompleted : Bool) {
         self.name = name
         self.dueDate = dueDate
         self.description = description
