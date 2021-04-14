@@ -10,8 +10,6 @@ import Foundation
 
 class Assignment {
     
-    //enum priorityLevel {case high, medium, low}
-    
     var name : String
     var dueDate : Date
     var description : String
