@@ -61,7 +61,7 @@
 		423FB8B626027C4D00C61CFC /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		425C3849260A3AA500713A3B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		425C384B260A3AB800713A3B /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		428EBA3125FA75BE0053DAD1 /* Due It.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Due It.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		428EBA3125FA75BE0053DAD1 /* Workflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428EBA3425FA75BE0053DAD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428EBA3625FA75BE0053DAD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		428EBA3825FA75BE0053DAD1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		428EBA3225FA75BE0053DAD1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				428EBA3125FA75BE0053DAD1 /* Due It.app */,
+				428EBA3125FA75BE0053DAD1 /* Workflow.app */,
 				428EBA4725FA75C10053DAD1 /* Due ItTests.xctest */,
 				428EBA5225FA75C10053DAD1 /* Due ItUITests.xctest */,
 			);
@@ -264,7 +264,7 @@
 			);
 			name = "Due It";
 			productName = "Due It";
-			productReference = 428EBA3125FA75BE0053DAD1 /* Due It.app */;
+			productReference = 428EBA3125FA75BE0053DAD1 /* Workflow.app */;
 			productType = "com.apple.product-type.application";
 		};
 		428EBA4625FA75C10053DAD1 /* Due ItTests */ = {
@@ -612,7 +612,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NewWaveComputers.Due-It";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Workflow;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -632,7 +632,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "NewWaveComputers.Due-It";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Workflow;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
