@@ -16,7 +16,7 @@ struct AddAssignmentView: View {
     var body: some View {
         NavigationView {
         VStack {
-            Group {
+            List {
                 VStack(alignment: .leading) {
                     TextField("Assignment Name", text: self.$assignment.name).autocapitalization(.words)
                     //if !assignment.validNameText.isEmpty {
