@@ -10,14 +10,14 @@ import Foundation
 
 class Assignment {
     
-    enum priorityLevel {case high, medium, low}
+    //enum priorityLevel {case high, medium, low}
     
     var name : String
     var dueDate : Date
     var description : String
     var course : String
     var estTime : Date
-    var priority : priorityLevel
+    var priority : Double
     var isCompleted : Bool
     
     init() {
@@ -26,11 +26,11 @@ class Assignment {
         description = ""
         course = ""
         estTime = Date()
-        priority = .high
+        priority = 0
         isCompleted = false
     }
     
-    init(name : String, dueDate : Date, description : String, course : String, estTime : Date, priority : priorityLevel, isCompleted : Bool) {
+    init(name : String, dueDate : Date, description : String, course : String, estTime : Date, priority : Double, isCompleted : Bool) {
         self.name = name
         self.dueDate = dueDate
         self.description = description

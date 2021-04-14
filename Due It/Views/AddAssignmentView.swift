@@ -20,7 +20,7 @@ struct AddAssignmentView: View {
                 VStack(alignment: .leading) {
                     TextField("Assignment Name", text: self.$assignment.name).autocapitalization(.words)
                     //if !assignment.validNameText.isEmpty {
-                      //  Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
+                    //  Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
                     //}
                 }
                 VStack(alignment: .leading) {
@@ -36,6 +36,17 @@ struct AddAssignmentView: View {
                 VStack(alignment: .leading) {
                     DatePicker("Estimated Time", selection: $assignment.estTime, in: Date()..., displayedComponents: .hourAndMinute)
                 }
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Low").padding(.leading, 15)
+                        Spacer()
+                        Text("Medium")
+                        Spacer()
+                        Text("High").padding(.trailing, 15)
+                    }
+                    Slider(value: self.$assignment.priority, in: 0...2, step: 1)
+                }
+                
   
             }.frame(width: 300)
                 .textFieldStyle(RoundedBorderTextFieldStyle())

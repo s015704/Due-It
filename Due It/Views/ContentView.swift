@@ -27,7 +27,7 @@ struct ContentView: View {
                             Text("Calendar")
                         }).tag(0)
                     HomeView(showAAV: $showAAV).sheet(isPresented: $showAAV) {
-                        AddAssignmentView()
+                        AddAssignmentView() 
                     }
                     .tabItem({
                         Image(systemName: "house")
