@@ -14,7 +14,7 @@ class Assignment {
     var dueDate : Date
     var description : String
     var course : String
-    var estTime : Date
+    var estTime : Double
     var priority : Double
     var isCompleted : Bool
     
@@ -23,12 +23,12 @@ class Assignment {
         dueDate = Date()
         description = ""
         course = ""
-        estTime = Date()
+        estTime = 0
         priority = 0
         isCompleted = false
     }
     
-    init(name : String, dueDate : Date, description : String, course : String, estTime : Date, priority : Double, isCompleted : Bool) {
+    init(name : String, dueDate : Date, description : String, course : String, estTime : Double, priority : Double, isCompleted : Bool) {
         self.name = name
         self.dueDate = dueDate
         self.description = description
