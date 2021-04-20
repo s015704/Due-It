@@ -10,7 +10,24 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+            Button(action: {
+                        try! Auth.auth().signOut()
+                        self.userInfo.configureFirebaseStateDidChange()
+                    }) {
+                        Text("Log Out")
+                            .frame(width: 200)
+                            .padding(.vertical, 15)
+                            .background(Color.green)
+                            .cornerRadius(8)
+                            .foregroundColor(.white)
+                    }
+        }
+        
+        
+        
+        
+        
     }
 }
 

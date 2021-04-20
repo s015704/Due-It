@@ -24,18 +24,18 @@ struct HomeView: View {
         }.foregroundColor(Color("regular1"))
         
         
-        //            Button(action: {
-        //                try! Auth.auth().signOut()
-        //                self.userInfo.configureFirebaseStateDidChange()
-        //            }) {
-        //                Text("Log Out")
-        //                    .frame(width: 200)
-        //                    .padding(.vertical, 15)
-        //                    .background(Color.green)
-        //                    .cornerRadius(8)
-        //                    .foregroundColor(.white)
-        //            }
-        //}
+//                    Button(action: {
+//                        try! Auth.auth().signOut()
+//                        self.userInfo.configureFirebaseStateDidChange()
+//                    }) {
+//                        Text("Log Out")
+//                            .frame(width: 200)
+//                            .padding(.vertical, 15)
+//                            .background(Color.green)
+//                            .cornerRadius(8)
+//                            .foregroundColor(.white)
+//                    }
+//        }
     }
     
 }

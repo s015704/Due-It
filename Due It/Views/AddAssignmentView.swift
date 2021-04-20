@@ -11,7 +11,6 @@ import SwiftUI
 struct AddAssignmentView: View {
     
     @State var assignment: Assignment = Assignment()
-    @State var 
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
