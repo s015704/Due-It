@@ -21,7 +21,7 @@ struct HomeView: View {
             self.showAAV = true
         }) {
             Image(systemName: "plus.circle.fill").scaleEffect(4)
-        }.foregroundColor(Color("regular1"))
+        }.foregroundColor(Color("highlight"))
         
         
 //                    Button(action: {

@@ -31,10 +31,10 @@ struct AddAssignmentView: View {
                 }
                 VStack(alignment: .leading) {
                     DatePicker("Due Date", selection: $assignment.dueDate, in: Date()...)
-                        //.aspectRatio(0.1, contentMode: .fit)
                 }
-                VStack(alignment: .leading) {
-                    DatePicker("Estimated Time", selection: $assignment.estTime, in: Date()..., displayedComponents: .hourAndMinute)
+                VStack(alignment: .leading) {   // I don't know how to store this time in estTime
+                    TimeStepperView(type: .hour)
+                    TimeStepperView(type: .minute)
                 }
                 VStack(alignment: .leading) {
                     HStack {
