@@ -12,6 +12,9 @@ struct ContentView: View {
     
     @EnvironmentObject var userInfo : UserInfo
     @State var showAAV = false
+    @State var curAssignments=[Assignment]()
+    @State var showCurAss=false
+    @State var clickedDay=""
     
     var body: some View {
         Group {
@@ -21,13 +24,15 @@ struct ContentView: View {
                 LogInView()
             } else {
                 TabView {
-                    RootView()
+                    RootView(curAssignments: self.$curAssignments, showCurAss: $showCurAss, clickedDay: $clickedDay ).sheet(isPresented: $showCurAss) {
+                        AssignmentsOnDayView(clickedDay: self.clickedDay)
+                    }
                         .tabItem({
                             Image(systemName: "calendar")
                             Text("Calendar")
                         }).tag(0)
                     HomeView(showAAV: $showAAV).sheet(isPresented: $showAAV) {
-                        AddAssignmentView() 
+                        AddAssignmentView(curAssignments: self.$curAssignments)
                     }
                     .tabItem({
                         Image(systemName: "house")

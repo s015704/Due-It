@@ -11,6 +11,7 @@ import SwiftUI
 struct TimeStepperView: View {
     
     @State var value = 0
+    @State var estTime=0
     @State var type : TimeType
     enum TimeType {case hour, minute}
 
@@ -33,11 +34,14 @@ struct TimeStepperView: View {
         switch type {
         case .hour:
             value+=1
+            estTime+=60
         case .minute:
             if value<55 {
                 value+=5
+                estTime+=5
             }
         }
+        print(estTime)
     }
     
     func decrementStep() {
@@ -58,6 +62,6 @@ struct TimeStepperView: View {
 
 struct TimeStepperView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeStepperView(type: .hour)
+        TimeStepperView(estTime: 0, type: .hour)
     }
 }

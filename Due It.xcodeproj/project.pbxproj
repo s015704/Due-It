@@ -29,6 +29,7 @@
 		42DE188A261CAC8B00A8D1CB /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE1889261CAC8B00A8D1CB /* Assignment.swift */; };
 		42DE188C261CB03A00A8D1CB /* AddAssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE188B261CB03A00A8D1CB /* AddAssignmentView.swift */; };
 		D0C20F3F2628B9DA002EBC4B /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F3E2628B9D9002EBC4B /* Calendar.swift */; };
+		D0C20F492631C1F5002EBC4B /* AssignmentsOnDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		849989074478384DE1F6B896 /* Pods-Due It.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Due It.release.xcconfig"; path = "Target Support Files/Pods-Due It/Pods-Due It.release.xcconfig"; sourceTree = "<group>"; };
 		A4791DFE16FC2CB872A701C7 /* Pods_Due_It.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Due_It.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C20F3E2628B9D9002EBC4B /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsOnDayView.swift; sourceTree = "<group>"; };
 		FFC1886B3BB0E87F61DFB326 /* Pods-Due It.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Due It.debug.xcconfig"; path = "Target Support Files/Pods-Due It/Pods-Due It.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 				428EBA3825FA75BE0053DAD1 /* ContentView.swift */,
 				423FB8B626027C4D00C61CFC /* HomeView.swift */,
 				42DE188B261CB03A00A8D1CB /* AddAssignmentView.swift */,
+				D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */,
 				D0C20F3E2628B9D9002EBC4B /* Calendar.swift */,
 				425C3849260A3AA500713A3B /* SettingsView.swift */,
 				42B8C9A5262FA181006B104B /* StepperView.swift */,
@@ -422,6 +425,7 @@
 				423FB8B026027C3700C61CFC /* UserInfo.swift in Sources */,
 				423FB8BB26027C4D00C61CFC /* HomeView.swift in Sources */,
 				423FB8B926027C4D00C61CFC /* SignInWithEmailView.swift in Sources */,
+				D0C20F492631C1F5002EBC4B /* AssignmentsOnDayView.swift in Sources */,
 				428EBA3525FA75BE0053DAD1 /* AppDelegate.swift in Sources */,
 				428EBA3725FA75BE0053DAD1 /* SceneDelegate.swift in Sources */,
 				423FB8B126027C3700C61CFC /* UserViewModel.swift in Sources */,

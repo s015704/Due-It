@@ -155,7 +155,10 @@ struct CalendarView<DateView>: View where DateView: View {
 
 struct RootView: View {
     @Environment(\.calendar) var calendar
-
+    @Binding var curAssignments:[Assignment]
+    @Binding var showCurAss: Bool
+    @Binding var clickedDay: String
+    
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: Date())!
     }
@@ -163,12 +166,11 @@ struct RootView: View {
         CalendarView(interval: year) { date in
             
             
-            Button(action: { if self.calendar.component(.day, from: date) == 31 && self.calendar.component(.month, from: date) == 7
-            
-            
-            {
-                print("hi")
-                }}){
+            Button(action: {
+                self.showCurAss=true
+                
+                print(self.curAssignments[0].estTime)
+                }){
                 Text("30")
                 .hidden()
                 .padding(8)
