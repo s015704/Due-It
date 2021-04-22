@@ -17,16 +17,16 @@ struct AddAssignmentView: View {
         NavigationView {
             VStack {
                 List {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
                         TextField("Assignment Name", text: self.$assignment.name).autocapitalization(.words)
                         //if !assignment.validNameText.isEmpty {
                         //  Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
                         //}
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
                         TextField("Description", text: self.$assignment.description).autocapitalization(.words)
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
                         TextField("Course", text: self.$assignment.course).autocapitalization(.words)
                     }
                     VStack(alignment: .leading) {
@@ -34,11 +34,9 @@ struct AddAssignmentView: View {
                     }
                     VStack(alignment: .leading) {   // I don't know how to store this time in estTime
                         TimeStepperView(estTime: assignment.estTime, type: .hour )
-                       // TimeStepperView(estTime: assignment.estTime, type: .minute)
-                        
-                        
+                        TimeStepperView(estTime: assignment.estTime, type: .minute)
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
                         HStack {
                             Text("Low").padding(.leading, 15)
                             Spacer()
@@ -60,7 +58,7 @@ struct AddAssignmentView: View {
                         Text("save").foregroundColor(Color("highlight")).scaledToFill()
                     }
                     
-                }.frame(width: 300)
+                }.frame(width: UIScreen.main.bounds.width)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 /* VStack(spacing: 20 ) {
                  Button(action: {

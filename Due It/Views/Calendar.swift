@@ -174,11 +174,12 @@ struct RootView: View {
                 Text("30")
                 .hidden()
                 .padding(8)
-                .background(Color.black)
+                .background(Color("Auxillary1"))
                 .clipShape(Circle())
                 .padding(.vertical, 4)
                 .overlay(
                     Text(String(self.calendar.component(.day, from: date))))
+                    .foregroundColor(Color.black)
                 
             }
         }
