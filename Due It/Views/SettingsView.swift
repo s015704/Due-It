@@ -13,11 +13,11 @@ import FirebaseDatabase
 
 struct SettingsView: View {
     
-    //@EnvironmentObject var userInfo: UserInfo
-    //@Binding var user: UserViewModel
+    @EnvironmentObject var userInfo: UserInfo
+    @State var user: UserViewModel
     
     var body: some View {
-        /*
+        
          ZStack{
          Rectangle()
          .fill(Color("background"))
@@ -25,11 +25,11 @@ struct SettingsView: View {
          VStack{
          HStack{
          Text("User Name: ").autocapitalization(.none).padding(.leading, -100).foregroundColor(Color("highlight")).font(.largeTitle)
-         Text(self.$user.fullname).autocapitalization(.none)
+         Text(self.user.fullname).autocapitalization(.none)
          }
          HStack{
          Text("User Email: ").autocapitalization(.none).padding(.leading, -100)
-         Text(self.$user.email).autocapitalization(.none)
+            Text(self.user.email).autocapitalization(.none)
          }
          
          Button(action: {
@@ -44,14 +44,14 @@ struct SettingsView: View {
          .foregroundColor(.white)
          }
          }
-         */
+         
         Text("hi")
     }
 }
-
+}
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView( user: UserViewModel())
     }
 }

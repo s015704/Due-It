@@ -38,7 +38,7 @@ struct ContentView: View {
                         Image(systemName: "house")
                         Text("Assignments")
                     }).tag(1)
-                    SettingsView()
+                    SettingsView(user: UserViewModel())
                         .tabItem({
                             Image(systemName: "gear")
                             Text("Settings")
