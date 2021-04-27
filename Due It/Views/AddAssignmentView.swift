@@ -49,10 +49,6 @@ struct AddAssignmentView: View {
                     
                     Button(action:{
                         self.curAssignments.append(self.assignment)
-                        for ass in self.curAssignments{
-                            print(ass.name)
-                            print(ass.estTime)
-                        }
                         self.presentationMode.wrappedValue.dismiss()
                     }){
                         Text("save").foregroundColor(Color("highlight")).scaledToFill()

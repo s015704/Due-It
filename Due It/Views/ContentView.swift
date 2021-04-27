@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var curAssignments=[Assignment]()
     @State var showCurAss=false
     @State var clickedDay=""
+    @State var day=Date()
     
     var body: some View {
         Group {
@@ -24,8 +25,8 @@ struct ContentView: View {
                 LogInView()
             } else {
                 TabView {
-                    RootView(curAssignments: self.$curAssignments, showCurAss: $showCurAss, clickedDay: $clickedDay ).sheet(isPresented: $showCurAss) {
-                        AssignmentsOnDayView(clickedDay: self.clickedDay)
+                    RootView(curAssignments: self.$curAssignments, showCurAss: $showCurAss, clickedDay: $clickedDay, day:$day ).sheet(isPresented: $showCurAss) {
+                        AssignmentsOnDayView(clickedDay: self.clickedDay, day: self.day, curAssignments:self.curAssignments)
                     }
                         .tabItem({
                             Image(systemName: "calendar")

@@ -158,6 +158,7 @@ struct RootView: View {
     @Binding var curAssignments:[Assignment]
     @Binding var showCurAss: Bool
     @Binding var clickedDay: String
+    @Binding var day:Date
     
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: Date())!
@@ -169,7 +170,11 @@ struct RootView: View {
             Button(action: {
                 self.showCurAss=true
                 
-                print(self.curAssignments[0].estTime)
+                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+                
+                self.day=date
+                
+                print(self.day)
                 }){
                 Text("30")
                 .hidden()
