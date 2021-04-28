@@ -10,6 +10,7 @@ import Foundation
 
 class Assignment {
     
+    let id = UUID()
     var name : String
     var dueDate : Date
     var description : String

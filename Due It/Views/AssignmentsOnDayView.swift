@@ -9,32 +9,28 @@
 import SwiftUI
 
 struct AssignmentsOnDayView: View {
+    
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.calendar) var calendar
     @State var clickedDay:String
     @State var day:Date
     @State var curAssignments:[Assignment]
+    
     var body: some View {
         NavigationView{
             VStack{
-                
-                Button(action: {
-                    
-                    for ass in self.curAssignments{
-                        
+                ForEach(curAssignments, id: \.id) { ass in
+                    Group {
                         if self.calendar.compare(ass.dueDate, to: self.day, toGranularity: .day) == .orderedSame{
-                        print(ass.name)
+                            AssignmentCView(assignment: ass)
                         }
-                        print(ass.dueDate)
                     }
+                }
+                /*
+                curAssignments.forEach{ ass in
                     
-                    print(self.day)
-                    
-                }){Text("click")}
-                
-                    
-                    
-                
+                }
+ */
             }.padding(.top)
                 .navigationBarTitle(clickedDay)
                 .navigationBarItems(trailing: Button("Dismiss") {

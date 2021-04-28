@@ -30,6 +30,7 @@
 		42DE188C261CB03A00A8D1CB /* AddAssignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DE188B261CB03A00A8D1CB /* AddAssignmentView.swift */; };
 		D0C20F3F2628B9DA002EBC4B /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F3E2628B9D9002EBC4B /* Calendar.swift */; };
 		D0C20F492631C1F5002EBC4B /* AssignmentsOnDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */; };
+		D0C20F502639CE14002EBC4B /* AssignmentCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F4F2639CE14002EBC4B /* AssignmentCView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		A4791DFE16FC2CB872A701C7 /* Pods_Due_It.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Due_It.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C20F3E2628B9D9002EBC4B /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsOnDayView.swift; sourceTree = "<group>"; };
+		D0C20F4F2639CE14002EBC4B /* AssignmentCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentCView.swift; sourceTree = "<group>"; };
 		FFC1886B3BB0E87F61DFB326 /* Pods-Due It.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Due It.debug.xcconfig"; path = "Target Support Files/Pods-Due It/Pods-Due It.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,12 +124,10 @@
 			children = (
 				42CD6962260D099600C2420E /* Firebase Login */,
 				42CD6961260D097900C2420E /* Calendar */,
-				428EBA3825FA75BE0053DAD1 /* ContentView.swift */,
-				423FB8B626027C4D00C61CFC /* HomeView.swift */,
+				D0C20F4E2639CDE6002EBC4B /* Tabs */,
 				42DE188B261CB03A00A8D1CB /* AddAssignmentView.swift */,
+				D0C20F4F2639CE14002EBC4B /* AssignmentCView.swift */,
 				D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */,
-				D0C20F3E2628B9D9002EBC4B /* Calendar.swift */,
-				425C3849260A3AA500713A3B /* SettingsView.swift */,
 				42B8C9A5262FA181006B104B /* StepperView.swift */,
 			);
 			path = Views;
@@ -240,6 +240,17 @@
 				849989074478384DE1F6B896 /* Pods-Due It.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D0C20F4E2639CDE6002EBC4B /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				428EBA3825FA75BE0053DAD1 /* ContentView.swift */,
+				423FB8B626027C4D00C61CFC /* HomeView.swift */,
+				425C3849260A3AA500713A3B /* SettingsView.swift */,
+				D0C20F3E2628B9D9002EBC4B /* Calendar.swift */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42DE188A261CAC8B00A8D1CB /* Assignment.swift in Sources */,
+				D0C20F502639CE14002EBC4B /* AssignmentCView.swift in Sources */,
 				42B8C9A6262FA181006B104B /* StepperView.swift in Sources */,
 				423FB8B726027C4D00C61CFC /* LogInView.swift in Sources */,
 				423FB8B826027C4D00C61CFC /* ForgotPasswordView.swift in Sources */,
