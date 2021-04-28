@@ -13,27 +13,32 @@ struct AssignmentCView: View {
     @State var assignment : Assignment
     
     var body: some View {
-        VStack {
-            Text("Name: \(assignment.name)")
-            Group {
-                if assignment.description != "" {
-                    Text("Description: \(assignment.description)")
-                }
-            }
-            Group {
-                if assignment.course != "" {
-                    Text("Course: \(assignment.course)")
-                }
-            }
-            HStack {
-                Text("Completion Status: ")
+        ZStack{
+            
+            
+            VStack {
+                Text("Name: \(assignment.name)")
                 Group {
-                    if assignment.isCompleted {
-                        Image(systemName: "checkmark.square.fill")
-                    } else {
-                        Image(systemName: "xmark.rectangle")
+                    if assignment.description != "" {
+                        Text("Description: \(assignment.description)")
                     }
                 }
+                Group {
+                    if assignment.course != "" {
+                        Text("Course: \(assignment.course)")
+                    }
+                }
+                HStack {
+                    Text("Completion Status: ")
+                    Group {
+                        if assignment.isCompleted {
+                            Image(systemName: "checkmark.square.fill")
+                        } else {
+                            Image(systemName: "xmark.rectangle")
+                        }
+                    }
+                }
+                Rectangle().frame(width: 300 , height: 200, alignment: .center).foregroundColor(Color("Auxilary1")).accentColor(Color("Background"))
             }
         }
     }
