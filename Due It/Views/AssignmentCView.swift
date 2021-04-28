@@ -15,9 +15,9 @@ struct AssignmentCView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .stroke(lineWidth: 8)
+                .stroke(Color("Auxillary1"), style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
                 .frame(width: UIScreen.main.bounds.width-50, height: 200, alignment: .center)
-                .cornerRadius(10)
+                .cornerRadius(8)
             //.foregroundColor(Color("Auxillary1"))
             VStack {
                 Text("Name: \(assignment.name)")
