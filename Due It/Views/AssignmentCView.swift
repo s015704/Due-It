@@ -14,8 +14,11 @@ struct AssignmentCView: View {
     
     var body: some View {
         ZStack{
-            
-            
+            Rectangle()
+                .stroke(lineWidth: 8)
+                .frame(width: UIScreen.main.bounds.width-50, height: 200, alignment: .center)
+                .cornerRadius(10)
+            //.foregroundColor(Color("Auxillary1"))
             VStack {
                 Text("Name: \(assignment.name)")
                 Group {
@@ -38,7 +41,6 @@ struct AssignmentCView: View {
                         }
                     }
                 }
-                Rectangle().frame(width: 300 , height: 200, alignment: .center).foregroundColor(Color("Auxilary1")).accentColor(Color("Background"))
             }
         }
     }

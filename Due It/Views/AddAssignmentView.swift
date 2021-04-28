@@ -75,8 +75,8 @@ struct AddAssignmentView: View {
                  Spacer()
                  }.padding()*/
             }.padding(.top)
-                .navigationBarTitle("Sign Up", displayMode: .inline)
-                .navigationBarItems(trailing: Button("Dismiss") {
+                .navigationBarTitle("Add Assignment", displayMode: .inline)
+                .navigationBarItems(trailing: Button("Close") {
                     self.presentationMode.wrappedValue.dismiss()
                 })
         }
