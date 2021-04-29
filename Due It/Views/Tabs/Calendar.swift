@@ -1,6 +1,7 @@
 import SwiftUI
 
 fileprivate extension DateFormatter {
+    
     static var month: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM"
@@ -12,9 +13,11 @@ fileprivate extension DateFormatter {
         formatter.dateFormat = "MMMM yyyy"
         return formatter
     }
+    
 }
 
 fileprivate extension Calendar {
+    
     func generateDates(
         inside interval: DateInterval,
         matching components: DateComponents
@@ -35,12 +38,14 @@ fileprivate extension Calendar {
                 }
             }
         }
-
+        
         return dates
     }
+    
 }
 
 struct WeekView<DateView>: View where DateView: View {
+    
     @Environment(\.calendar) var calendar
 
     let week: Date
@@ -77,6 +82,7 @@ struct WeekView<DateView>: View where DateView: View {
 }
 
 struct MonthView<DateView>: View where DateView: View {
+    
     @Environment(\.calendar) var calendar
 
     let month: Date
@@ -116,7 +122,6 @@ struct MonthView<DateView>: View where DateView: View {
             if showHeader {
                 header
             }
-
             ForEach(weeks, id: \.self) { week in
                 WeekView(week: week, content: self.content)
             }
@@ -125,6 +130,7 @@ struct MonthView<DateView>: View where DateView: View {
 }
 
 struct CalendarView<DateView>: View where DateView: View {
+    
     @Environment(\.calendar) var calendar
 
     let interval: DateInterval
@@ -155,35 +161,41 @@ struct CalendarView<DateView>: View where DateView: View {
 
 struct RootView: View {
     @Environment(\.calendar) var calendar
-    @Binding var curAssignments:[Assignment]
+    @Binding var curAssignments : [Assignment]
     @Binding var showCurAss: Bool
     @Binding var clickedDay: String
-    @Binding var day:Date
-    
-    private var year: DateInterval {
-        calendar.dateInterval(of: .year, for: Date())!
+    @Binding var day : Date
+    private var startIntervalDate : Date {
+        let components : DateComponents = calendar.dateComponents([.year, .month], from: Date())
+        let d = calendar.date(from: components)
+        return d!
+    }
+    private var endIntervalDate : Date {
+        var components : DateComponents = calendar.dateComponents([.year, .month], from: Date())
+        components.year! += 1
+        let d = calendar.date(from: components)
+        return d!
+    }
+
+    private var dInterval: DateInterval {
+        DateInterval(start: startIntervalDate, end: endIntervalDate)
     }
     var body: some View {
-        CalendarView(interval: year) { date in
-            
-            
+        CalendarView(interval: dInterval) { date in
             Button(action: {
                 self.showCurAss=true
-                
                 self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                
                 self.day=date
-                
                 print(self.day)
-                }){
+            }){
                 Text("30")
-                .hidden()
-                .padding(8)
-                .background(Color("Auxillary1"))
-                .clipShape(Circle())
-                .padding(.vertical, 4)
-                .overlay(
-                    Text(String(self.calendar.component(.day, from: date))))
+                    .hidden()
+                    .padding(8)
+                    .background(Color("Auxillary1"))
+                    .clipShape(Circle())
+                    .padding(.vertical, 4)
+                    .overlay(
+                        Text(String(self.calendar.component(.day, from: date))))
                     .foregroundColor(Color.black)
                 
             }

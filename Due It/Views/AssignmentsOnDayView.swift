@@ -19,18 +19,13 @@ struct AssignmentsOnDayView: View {
     var body: some View {
         NavigationView{
             VStack{
-                ForEach(curAssignments, id: \.id) { ass in
+                List(curAssignments, id: \.id) { ass in
                     Group {
-                        if self.calendar.compare(ass.dueDate, to: self.day, toGranularity: .day) == .orderedSame{
-                            AssignmentCView(assignment: ass)
+                        if self.calendar.compare(ass.dueDate, to: self.day, toGranularity: .day) == .orderedSame {
+                            AssignmentCView(assignment: ass, auxColor: 1)
                         }
                     }
                 }
-                /*
-                curAssignments.forEach{ ass in
-                    
-                }
- */
             }.padding(.top)
                 .navigationBarTitle(clickedDay)
                 .navigationBarItems(trailing: Button("Dismiss") {

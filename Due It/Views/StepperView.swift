@@ -27,7 +27,7 @@ struct TimeStepperView: View {
     var body: some View {
         Stepper(onIncrement: incrementStep, onDecrement: decrementStep) {
             Text("\(typeName): \(value)")
-        }
+        }.padding([.leading, .trailing], 30)
     }
     
     func incrementStep() {

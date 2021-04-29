@@ -11,28 +11,39 @@ import SwiftUI
 struct AssignmentCView: View {
     
     @State var assignment : Assignment
+    @State var auxColor : Int
     
     var body: some View {
         ZStack{
             Rectangle()
-                .stroke(Color("Auxillary1"), style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+                .stroke(lineWidth: 8)
                 .frame(width: UIScreen.main.bounds.width-50, height: 200, alignment: .center)
-                .cornerRadius(8)
-            //.foregroundColor(Color("Auxillary1"))
+                .cornerRadius(10)
+                .foregroundColor(auxColor==1 ? Color("Auxillary1") : Color("Auxillary2"))
             VStack {
-                Text("Name: \(assignment.name)")
-                Group {
-                    if assignment.description != "" {
-                        Text("Description: \(assignment.description)")
-                    }
-                }
+                Text(assignment.name)
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                    .frame(width: UIScreen.main.bounds.width-80, alignment: .center)
                 Group {
                     if assignment.course != "" {
-                        Text("Course: \(assignment.course)")
+                        Text(assignment.course)
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
+                            .frame(width: UIScreen.main.bounds.width-80, alignment: .center)
+                    }
+                }
+                Text("")
+                Group {
+                    if assignment.description != "" {
+                        Text(assignment.description)
+                            .multilineTextAlignment(.center)
+                            .frame(width: UIScreen.main.bounds.width-80, alignment: .center)
                     }
                 }
                 HStack {
                     Text("Completion Status: ")
+                        .font(.caption)
                     Group {
                         if assignment.isCompleted {
                             Image(systemName: "checkmark.square.fill")
@@ -48,6 +59,6 @@ struct AssignmentCView: View {
 
 struct AssignmentCView_Previews: PreviewProvider {
     static var previews: some View {
-        AssignmentCView(assignment: Assignment())
+        AssignmentCView(assignment: Assignment(), auxColor: 1)
     }
 }

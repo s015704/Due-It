@@ -16,27 +16,41 @@ struct AddAssignmentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    VStack(alignment: .center) {
-                        TextField("Assignment Name", text: self.$assignment.name).autocapitalization(.words)
+                VStack(alignment: .center) {
+                    
+                    VStack {
+                        Text("Details")
+                            .font(.headline)
+                            .padding(.bottom, 5)
+                        TextField("Assignment Name", text: self.$assignment.name)
+                            .autocapitalization(.words)
                         //if !assignment.validNameText.isEmpty {
                         //  Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
                         //}
-                    }
-                    VStack(alignment: .center) {
-                        TextField("Description", text: self.$assignment.description).autocapitalization(.words)
-                    }
-                    VStack(alignment: .center) {
-                        TextField("Course", text: self.$assignment.course).autocapitalization(.words)
-                    }
-                    VStack(alignment: .leading) {
-                        DatePicker("Due Date", selection: $assignment.dueDate, in: Date()...)
-                    }
-                    VStack(alignment: .leading) {   // I don't know how to store this time in estTime
-                        TimeStepperView(estTime: assignment.estTime, type: .hour )
+                        TextField("Description", text: self.$assignment.description)
+                        TextField("Course", text: self.$assignment.course)
+                            .autocapitalization(.words)
+                    }.padding(.top, 15)
+                    
+                    VStack {
+                        Text("Due Date")
+                            .font(.headline)
+                        DatePicker("", selection: $assignment.dueDate, displayedComponents: [.date]).padding(.trailing, 25)
+                            .padding(.top, -10)
+                    }.padding(.top, 15)
+                    
+                    VStack {
+                        Text("Estimated Completion Time")
+                            .font(.headline)
+                            .padding(.bottom, 5)
+                        TimeStepperView(estTime: assignment.estTime, type: .hour ) // I don't know how to store this time in estTime
                         TimeStepperView(estTime: assignment.estTime, type: .minute)
-                    }
-                    VStack(alignment: .center) {
+                    }.padding(.top, 15)
+                    
+                    VStack {
+                        Text("Priority Level")
+                            .font(.headline)
+                            .padding(.bottom, 5)
                         HStack {
                             Text("Low").padding(.leading, 15)
                             Spacer()
@@ -44,36 +58,25 @@ struct AddAssignmentView: View {
                             Spacer()
                             Text("High").padding(.trailing, 15)
                         }
-                        Slider(value: self.$assignment.priority, in: 0...2, step: 1)
-                    }
+                    }.padding(.top, 15)
                     
-                    Button(action:{
-                        self.curAssignments.append(self.assignment)
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        Text("save").foregroundColor(Color("highlight")).scaledToFill()
-                    }
+                    Slider(value: self.$assignment.priority, in: 0...2, step: 1)
                     
-                }.frame(width: UIScreen.main.bounds.width)
+                }.frame(width: UIScreen.main.bounds.width-80)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                /* VStack(spacing: 20 ) {
-                 Button(action: {
-                 Auth.auth().createUser(withEmail: self.user.email, password: self.user.password, completion: { (user, error) in
-                 self.userInfo.configureFirebaseStateDidChange()
-                 self.presentationMode.wrappedValue.dismiss()
-                 })
-                 }) {
-                 Text("Register")
-                 .frame(width: 200)
-                 .padding(.vertical, 15)
-                 .background(Color.green)
-                 .cornerRadius(8)
-                 .foregroundColor(.white)
-                 .opacity(user.isSignInComplete ? 1 : 0.75)
-                 }
-                 .disabled(!user.isSignInComplete)
-                 Spacer()
-                 }.padding()*/
+                
+                Spacer()
+                Button(action:{
+                    self.curAssignments.append(self.assignment)
+                    self.presentationMode.wrappedValue.dismiss()
+                }){
+                    HStack {
+                        Text("SAVE")
+                            .font(.title)
+                            .foregroundColor(Color("Auxillary3"))
+                    }
+                }
+                Spacer()
             }.padding(.top)
                 .navigationBarTitle("Add Assignment", displayMode: .inline)
                 .navigationBarItems(trailing: Button("Close") {
@@ -88,3 +91,22 @@ struct AddAssignmentView_Previews: PreviewProvider {
         AddAssignmentView(curAssignments: Binding.constant([Assignment]()))
     }
 }
+
+/* VStack(spacing: 20 ) {
+Button(action: {
+Auth.auth().createUser(withEmail: self.user.email, password: self.user.password, completion: { (user, error) in
+self.userInfo.configureFirebaseStateDidChange()
+self.presentationMode.wrappedValue.dismiss()
+})
+}) {
+Text("Register")
+.frame(width: 200)
+.padding(.vertical, 15)
+.background(Color.green)
+.cornerRadius(8)
+.foregroundColor(.white)
+.opacity(user.isSignInComplete ? 1 : 0.75)
+}
+.disabled(!user.isSignInComplete)
+Spacer()
+}.padding()*/
