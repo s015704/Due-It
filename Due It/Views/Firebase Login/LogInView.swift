@@ -13,7 +13,7 @@ struct LogInView: View {
     enum Action {
         case signUp, resetPW
     }
-    
+    @State var num =  3
     @State var showSheet = false
     @State var action : Action?
     @EnvironmentObject var userInfo: UserInfo
