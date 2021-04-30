@@ -15,7 +15,9 @@ class Assignment {
     var dueDate : Date
     var description : String
     var course : String
-    var estTime : Int
+    var estTime : Double
+    var timeLeft : Double
+    var timePerDay : Double
     var priority : Double
     var isCompleted : Bool
     
@@ -25,21 +27,28 @@ class Assignment {
         description = ""
         course = ""
         estTime = 0
+        timeLeft = 0
+        timePerDay = 0
         priority = 0
         isCompleted = false
     }
     
-    init(name : String, dueDate : Date, description : String, course : String, estTime : Int, priority : Double, isCompleted : Bool) {
+    init(name : String, dueDate : Date, description : String, course : String, estTime : Double, priority : Double, isCompleted : Bool) {
         self.name = name
         self.dueDate = dueDate
         self.description = description
         self.course = course
         self.estTime = estTime
+        self.timeLeft = Double(estTime)
+        self.timePerDay = 0
         self.priority = priority
         self.isCompleted = isCompleted
     }
     
     func complete() {
+        self.estTime = 0
+        self.timeLeft = 0
+        self.timePerDay = 0
         isCompleted = true
     }
     

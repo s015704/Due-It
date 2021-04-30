@@ -122,13 +122,12 @@
 		425C384D260A3ACE00713A3B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				42CD6962260D099600C2420E /* Firebase Login */,
-				42CD6961260D097900C2420E /* Calendar */,
-				D0C20F4E2639CDE6002EBC4B /* Tabs */,
 				42DE188B261CB03A00A8D1CB /* AddAssignmentView.swift */,
 				D0C20F4F2639CE14002EBC4B /* AssignmentCView.swift */,
 				D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */,
 				42B8C9A5262FA181006B104B /* StepperView.swift */,
+				42CD6962260D099600C2420E /* Firebase Login */,
+				D0C20F4E2639CDE6002EBC4B /* Tabs */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,13 +203,6 @@
 				428EBA5825FA75C10053DAD1 /* Info.plist */,
 			);
 			path = "Due ItUITests";
-			sourceTree = "<group>";
-		};
-		42CD6961260D097900C2420E /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Calendar;
 			sourceTree = "<group>";
 		};
 		42CD6962260D099600C2420E /* Firebase Login */ = {

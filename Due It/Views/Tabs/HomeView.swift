@@ -16,11 +16,13 @@ struct HomeView: View {
     @EnvironmentObject var userInfo : UserInfo
     @Binding var showAAV: Bool
     @State var user: UserViewModel
+    @Binding var dailyWorkingTime: Double
     
     var body: some View {
         Button(action: {
             self.showAAV = true
             print(self.user.email)
+            print(self.dailyWorkingTime)
         }) {
             Image(systemName: "plus.circle.fill").scaleEffect(4)
         }.foregroundColor(Color("highlight"))
@@ -45,6 +47,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(showAAV: .constant(true), user: UserViewModel())
+        HomeView(showAAV: .constant(true), user: UserViewModel(), dailyWorkingTime: Binding.constant(0))
     }
 }
