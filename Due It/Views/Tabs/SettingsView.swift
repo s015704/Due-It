@@ -14,7 +14,8 @@ import FirebaseDatabase
 struct SettingsView: View {
     
     @EnvironmentObject var userInfo: UserInfo
-    @State var user: UserViewModel
+    @Binding var user: UserViewModel
+    @Binding var dailyWorkingTime : Double
     
     var body: some View {
         
@@ -25,23 +26,31 @@ struct SettingsView: View {
         //VStack{
         //HStack{
         //Text("User Name: ").autocapitalization(.none).padding(.leading, -100).foregroundColor(Color("highlight")).font(.largeTitle)
-        //Text(self.user.fullname).autocapitalization(.none)
+        
         //}
         //HStack{
         //Text("User Email: ").autocapitalization(.none).padding(.leading, -100)
         //Text(self.user.email).autocapitalization(.none)
         //}
-        
-        Button(action: {
-            try! Auth.auth().signOut()
-            self.userInfo.configureFirebaseStateDidChange()
-        }) {
-            Text("Log Out")
-                .frame(width: 200)
-                .padding(.vertical, 15)
-                .background(Color("Auxillary2"))
-                .cornerRadius(8)
-                .foregroundColor(.white)
+        VStack {
+            Text(self.user.fullname).autocapitalization(.none)
+            
+            Stepper(value: $dailyWorkingTime, in: 0...24, step: 0.25) {
+                Text("Available Daily Working Time: \(dailyWorkingTime, specifier: "%g")")
+                    .font(.headline)
+            }.padding([.leading, .trailing], 30)
+            
+            Button(action: {
+                try! Auth.auth().signOut()
+                self.userInfo.configureFirebaseStateDidChange()
+            }) {
+                Text("Log Out")
+                    .frame(width: 200)
+                    .padding(.vertical, 15)
+                    .background(Color("Auxillary2"))
+                    .cornerRadius(8)
+                    .foregroundColor(.black)
+            }
         }
     }
     
@@ -51,6 +60,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView( user: UserViewModel())
+        SettingsView(user: Binding.constant(UserViewModel()), dailyWorkingTime: Binding.constant(0.0))
     }
 }

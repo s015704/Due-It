@@ -16,7 +16,9 @@ struct AddAssignmentView: View {
     @Environment(\.presentationMode) var presentationMode
     var ref: DatabaseReference! = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
-    
+    @State private var estHours : Double = 0
+    @State private var estMinutes : Double = 0
+
     var body: some View {
         NavigationView {
             VStack {
@@ -47,8 +49,14 @@ struct AddAssignmentView: View {
                         Text("Estimated Completion Time")
                             .font(.headline)
                             .padding(.bottom, 5)
-                        TimeStepperView(estTime: assignment.estTime, type: .hour ) // I don't know how to store this time in estTime
-                        TimeStepperView(estTime: assignment.estTime, type: .minute)
+                        Stepper(value: $estHours, in: 0...24, step: 1) {
+                            Text("Hours: \(estHours, specifier: "%g")")
+                        }.padding([.leading, .trailing], 45)
+                        Stepper(value: $estMinutes, in: 0...60, step: 5) {
+                            Text("Minutes: \(estMinutes, specifier: "%g")")
+                        }.padding([.leading, .trailing], 45)
+                        //TimeStepperView(assignment: assignment, type: .hour ) // I don't know how to store this time in estTime
+                        //TimeStepperView(assignment: assignment, type: .minute)
                     }.padding(.top, 15)
                     
                     VStack {
@@ -71,6 +79,7 @@ struct AddAssignmentView: View {
                 
                 Spacer()
                 Button(action:{
+                    self.assignment.estTime = self.estHours+self.estMinutes/60
                     self.curAssignments.append(self.assignment)
                     self.ref.child("users").child(self.uid!).setValue("curAssignments")
                     self.presentationMode.wrappedValue.dismiss()
