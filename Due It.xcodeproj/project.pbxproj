@@ -31,6 +31,7 @@
 		D0C20F3F2628B9DA002EBC4B /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F3E2628B9D9002EBC4B /* Calendar.swift */; };
 		D0C20F492631C1F5002EBC4B /* AssignmentsOnDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */; };
 		D0C20F502639CE14002EBC4B /* AssignmentCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F4F2639CE14002EBC4B /* AssignmentCView.swift */; };
+		D0C20F52263C4FA2002EBC4B /* AssignmentHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C20F51263C4FA2002EBC4B /* AssignmentHView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		D0C20F3E2628B9D9002EBC4B /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsOnDayView.swift; sourceTree = "<group>"; };
 		D0C20F4F2639CE14002EBC4B /* AssignmentCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentCView.swift; sourceTree = "<group>"; };
+		D0C20F51263C4FA2002EBC4B /* AssignmentHView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentHView.swift; sourceTree = "<group>"; };
 		FFC1886B3BB0E87F61DFB326 /* Pods-Due It.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Due It.debug.xcconfig"; path = "Target Support Files/Pods-Due It/Pods-Due It.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				D0C20F4E2639CDE6002EBC4B /* Tabs */,
 				42DE188B261CB03A00A8D1CB /* AddAssignmentView.swift */,
 				D0C20F4F2639CE14002EBC4B /* AssignmentCView.swift */,
+				D0C20F51263C4FA2002EBC4B /* AssignmentHView.swift */,
 				D0C20F482631C1F5002EBC4B /* AssignmentsOnDayView.swift */,
 				42B8C9A5262FA181006B104B /* StepperView.swift */,
 			);
@@ -445,6 +448,7 @@
 				428EBA3925FA75BE0053DAD1 /* ContentView.swift in Sources */,
 				425C384A260A3AA500713A3B /* SettingsView.swift in Sources */,
 				42DE188C261CB03A00A8D1CB /* AddAssignmentView.swift in Sources */,
+				D0C20F52263C4FA2002EBC4B /* AssignmentHView.swift in Sources */,
 				D0C20F3F2628B9DA002EBC4B /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

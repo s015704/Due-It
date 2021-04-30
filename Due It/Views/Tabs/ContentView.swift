@@ -19,7 +19,8 @@ struct ContentView: View {
     @State var day=Date()
     
     var body: some View {
-        Group {
+        
+       Group {
             if userInfo.isUserAuthenticated == .undefined {
                 Text("Loading")
             } else if userInfo.isUserAuthenticated == .signedOut {
