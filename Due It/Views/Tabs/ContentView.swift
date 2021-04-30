@@ -35,7 +35,7 @@ struct ContentView: View {
                             Image(systemName: "calendar")
                             Text("Calendar")
                         }).tag(0)
-                    HomeView(showAAV: $showAAV, user: self.user, dailyWorkingTime: self.$dailyWorkingTime).sheet(isPresented: $showAAV) {
+                    HomeView(showAAV: $showAAV, user: self.user, dailyWorkingTime: self.$dailyWorkingTime, curAssignments: self.$curAssignments).sheet(isPresented: $showAAV) {
                         AddAssignmentView(curAssignments: self.$curAssignments)
                     }
                     .tabItem({
