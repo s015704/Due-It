@@ -7,7 +7,7 @@ fileprivate extension DateFormatter {
         formatter.dateFormat = "MMMM"
         return formatter
     }
-
+    
     static var monthAndYear: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM yyyy"
@@ -24,7 +24,7 @@ fileprivate extension Calendar {
     ) -> [Date] {
         var dates: [Date] = []
         dates.append(interval.start)
-
+        
         enumerateDates(
             startingAfter: interval.start,
             matching: components,
@@ -47,15 +47,15 @@ fileprivate extension Calendar {
 struct WeekView<DateView>: View where DateView: View {
     
     @Environment(\.calendar) var calendar
-
+    
     let week: Date
     let content: (Date) -> DateView
-
+    
     init(week: Date, @ViewBuilder content: @escaping (Date) -> DateView) {
         self.week = week
         self.content = content
     }
-
+    
     private var days: [Date] {
         guard
             let weekInterval = calendar.dateInterval(of: .weekOfYear, for: week)
@@ -65,7 +65,7 @@ struct WeekView<DateView>: View where DateView: View {
             matching: DateComponents(hour: 0, minute: 0, second: 0)
         )
     }
-
+    
     var body: some View {
         HStack {
             ForEach(days, id: \.self) { date in
@@ -84,11 +84,11 @@ struct WeekView<DateView>: View where DateView: View {
 struct MonthView<DateView>: View where DateView: View {
     
     @Environment(\.calendar) var calendar
-
+    
     let month: Date
     let showHeader: Bool
     let content: (Date) -> DateView
-
+    
     init(
         month: Date,
         showHeader: Bool = true,
@@ -98,7 +98,7 @@ struct MonthView<DateView>: View where DateView: View {
         self.content = content
         self.showHeader = showHeader
     }
-
+    
     private var weeks: [Date] {
         guard
             let monthInterval = calendar.dateInterval(of: .month, for: month)
@@ -108,7 +108,7 @@ struct MonthView<DateView>: View where DateView: View {
             matching: DateComponents(hour: 0, minute: 0, second: 0, weekday: calendar.firstWeekday)
         )
     }
-
+    
     private var header: some View {
         let component = calendar.component(.month, from: month)
         let formatter = component > 0 ? DateFormatter.monthAndYear : .month
@@ -116,7 +116,7 @@ struct MonthView<DateView>: View where DateView: View {
             .font(.title)
             .padding()
     }
-
+    
     var body: some View {
         VStack {
             if showHeader {
@@ -132,22 +132,22 @@ struct MonthView<DateView>: View where DateView: View {
 struct CalendarView<DateView>: View where DateView: View {
     
     @Environment(\.calendar) var calendar
-
+    
     let interval: DateInterval
     let content: (Date) -> DateView
-
+    
     init(interval: DateInterval, @ViewBuilder content: @escaping (Date) -> DateView) {
         self.interval = interval
         self.content = content
     }
-
+    
     private var months: [Date] {
         calendar.generateDates(
             inside: interval,
             matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0)
         )
     }
-
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -165,6 +165,8 @@ struct RootView: View {
     @Binding var showCurAss: Bool
     @Binding var clickedDay: String
     @Binding var day : Date
+    @State var color : String = ""
+    
     private var startIntervalDate : Date {
         let components : DateComponents = calendar.dateComponents([.year, .month], from: Date())
         let d = calendar.date(from: components)
@@ -176,28 +178,69 @@ struct RootView: View {
         let d = calendar.date(from: components)
         return d!
     }
-
+    
     private var dInterval: DateInterval {
         DateInterval(start: startIntervalDate, end: endIntervalDate)
     }
     var body: some View {
         CalendarView(interval: dInterval) { date in
-            Button(action: {
-                self.showCurAss=true
-                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                self.day=date
-                print(self.day)
-            }){
-                Text("30")
-                    .hidden()
-                    .padding(8)
-                    .background(Color("Auxillary1"))
-                    .clipShape(Circle())
-                    .padding(.vertical, 4)
-                    .overlay(
-                        Text(String(self.calendar.component(.day, from: date))))
-                    .foregroundColor(Color.black)
-                
+                Button(action: {
+                    self.showCurAss=true
+                    self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+                    self.day=date
+                    print(self.day)
+                }){
+                    Text("30")
+                        .hidden()
+                        .padding(8)
+                        .background(Color("Auxillary1"))
+                        .clipShape(Circle())
+                        .padding(.vertical, 4)
+                        .overlay(
+                            Text(String(self.calendar.component(.day, from: date))))
+                        .foregroundColor(Color.black)
+                }
+            
+                ForEach(self.curAssignments, id: \.id){ ass in
+                    Group{
+                        if self.calendar.compare(ass.dueDate, to: date, toGranularity: .day) == .orderedSame {
+                            Button(action: {
+                                self.showCurAss=true
+                                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+                                self.day=date
+                                print(self.day)
+                            }){
+                                Text("30")
+                                    .hidden()
+                                    .padding(8)
+                                    .background(Color("background"))
+                                    .clipShape(Circle())
+                                    .padding(.vertical, 4)
+                                    .overlay(
+                                        Text(String(self.calendar.component(.day, from: date))))
+                                    .foregroundColor(Color.black)
+                                
+                            }
+                        } /*else {
+                            Button(action: {
+                                self.showCurAss=true
+                                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+                                self.day=date
+                                print(self.day)
+                            }){
+                                Text("30")
+                                    .hidden()
+                                    .padding(8)
+                                    .background(Color("Auxillary1"))
+                                    .clipShape(Circle())
+                                    .padding(.vertical, 4)
+                                    .overlay(
+                                        Text(String(self.calendar.component(.day, from: date))))
+                                    .foregroundColor(Color.black)
+                            }
+                        }*/
+                    
+                }
             }
         }
     }

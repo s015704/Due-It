@@ -17,7 +17,7 @@ struct UserViewModel {
     // MARK: - Validation Checks
     
     func passwordsMatch(_confirmPW:String) -> Bool {
-        return _confirmPW   == password
+        return _confirmPW == password
     }
     
     func isEmpty(_field:String) -> Bool {

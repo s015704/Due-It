@@ -16,13 +16,14 @@ struct LogInView: View {
     @State var num =  3
     @State var showSheet = false
     @State var action : Action?
+    @State var user: UserViewModel
     @EnvironmentObject var userInfo: UserInfo
     
     var body: some View {
         SignInWithEmailView(showSheet: $showSheet, action: $action)
             .sheet(isPresented: $showSheet) {
                 if self.action == .signUp {
-                    SignUpView().environmentObject(self.userInfo)
+                    SignUpView(user: self.user).environmentObject(self.userInfo)
                 } else {
                     ForgotPasswordView()
                 }
@@ -32,6 +33,6 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        LogInView()
+        LogInView(user: UserViewModel())
     }
 }

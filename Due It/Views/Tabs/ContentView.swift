@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @EnvironmentObject var userInfo : UserInfo
     @State var showAAV = false
+    @State var user: UserViewModel = UserViewModel()
     @State var curAssignments=[Assignment]()
     @State var showCurAss=false
     @State var clickedDay=""
@@ -22,7 +23,7 @@ struct ContentView: View {
             if userInfo.isUserAuthenticated == .undefined {
                 Text("Loading")
             } else if userInfo.isUserAuthenticated == .signedOut {
-                LogInView()
+                LogInView(user: self.user)
             } else {
                 TabView {
                     RootView(curAssignments: self.$curAssignments, showCurAss: $showCurAss, clickedDay: $clickedDay, day:$day ).sheet(isPresented: $showCurAss) {
@@ -32,14 +33,14 @@ struct ContentView: View {
                             Image(systemName: "calendar")
                             Text("Calendar")
                         }).tag(0)
-                    HomeView(showAAV: $showAAV).sheet(isPresented: $showAAV) {
+                    HomeView(showAAV: $showAAV, user: self.user).sheet(isPresented: $showAAV) {
                         AddAssignmentView(curAssignments: self.$curAssignments)
                     }
                     .tabItem({
                         Image(systemName: "house")
                         Text("Assignments")
                     }).tag(1)
-                    SettingsView(user: UserViewModel())
+                    SettingsView(user: self.user)
                         .tabItem({
                             Image(systemName: "gear")
                             Text("Settings")

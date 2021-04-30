@@ -7,11 +7,15 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
+import FirebaseAuth
 
 struct AddAssignmentView: View {
     @Binding var curAssignments:[Assignment]
     @State var assignment: Assignment = Assignment()
     @Environment(\.presentationMode) var presentationMode
+    var ref: DatabaseReference! = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
     
     var body: some View {
         NavigationView {
@@ -68,6 +72,7 @@ struct AddAssignmentView: View {
                 Spacer()
                 Button(action:{
                     self.curAssignments.append(self.assignment)
+                    self.ref.child("users").child(self.uid!).setValue("curAssignments")
                     self.presentationMode.wrappedValue.dismiss()
                 }){
                     HStack {

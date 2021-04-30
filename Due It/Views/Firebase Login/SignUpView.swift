@@ -11,7 +11,7 @@ import FirebaseAuth
 
 struct SignUpView: View {
     @EnvironmentObject var userInfo: UserInfo
-    @State var user: UserViewModel = UserViewModel()
+    @State var user: UserViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -73,6 +73,6 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(user:UserViewModel())
     }
 }
