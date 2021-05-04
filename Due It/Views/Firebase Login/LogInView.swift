@@ -20,7 +20,7 @@ struct LogInView: View {
     @EnvironmentObject var userInfo: UserInfo
     
     var body: some View {
-        SignInWithEmailView(showSheet: $showSheet, action: $action)
+        SignInWithEmailView(user: $user, showSheet: $showSheet, action: $action)
             .sheet(isPresented: $showSheet) {
                 if self.action == .signUp {
                     SignUpView(user: self.user).environmentObject(self.userInfo)

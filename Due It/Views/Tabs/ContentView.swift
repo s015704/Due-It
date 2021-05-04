@@ -42,7 +42,7 @@ struct ContentView: View {
                         Image(systemName: "house")
                         Text("Assignments")
                     }).tag(1)
-                    SettingsView(user: self.$user, dailyWorkingTime: self.$dailyWorkingTime)
+                    SettingsView(user: self.user, dailyWorkingTime: self.$dailyWorkingTime)
                         .tabItem({
                             Image(systemName: "gear")
                             Text("Settings")
