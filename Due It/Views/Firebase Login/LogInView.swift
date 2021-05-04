@@ -13,19 +13,18 @@ struct LogInView: View {
     enum Action {
         case signUp, resetPW
     }
-    @State var num =  3
     @State var showSheet = false
     @State var action : Action?
-    @State var user: UserViewModel
+    @Binding var user: UserViewModel
     @EnvironmentObject var userInfo: UserInfo
     
     var body: some View {
-        SignInWithEmailView(showSheet: $showSheet, action: $action)
+        SignInWithEmailView(user: self.$user, showSheet: $showSheet, action: $action)
             .sheet(isPresented: $showSheet) {
                 if self.action == .signUp {
-                    SignUpView(user: self.user).environmentObject(self.userInfo)
+                    SignUpView(user: self.$user).environmentObject(self.userInfo)
                 } else {
-                    ForgotPasswordView()
+                    ForgotPasswordView(user: self.$user)
                 }
             }
     }
@@ -33,6 +32,6 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        LogInView(user: UserViewModel())
+        LogInView(user: Binding.constant(UserViewModel()))
     }
 }

@@ -184,64 +184,61 @@ struct RootView: View {
     }
     var body: some View {
         CalendarView(interval: dInterval) { date in
-                Button(action: {
-                    self.showCurAss=true
-                    self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                    self.day=date
-                    print(self.day)
-                }){
-                    Text("30")
-                        .hidden()
-                        .padding(8)
-                        .background(Color("Auxillary1"))
-                        .clipShape(Circle())
-                        .padding(.vertical, 4)
-                        .overlay(
-                            Text(String(self.calendar.component(.day, from: date))))
-                        .foregroundColor(Color.black)
-                }
-            
-                ForEach(self.curAssignments, id: \.id){ ass in
-                    Group{
-                        if self.calendar.compare(ass.dueDate, to: date, toGranularity: .day) == .orderedSame {
-                            Button(action: {
-                                self.showCurAss=true
-                                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                                self.day=date
-                                print(self.day)
-                            }){
-                                Text("30")
-                                    .hidden()
-                                    .padding(8)
-                                    .background(Color("background"))
-                                    .clipShape(Circle())
-                                    .padding(.vertical, 4)
-                                    .overlay(
-                                        Text(String(self.calendar.component(.day, from: date))))
-                                    .foregroundColor(Color.black)
-                                
-                            }
-                        } /*else {
-                            Button(action: {
-                                self.showCurAss=true
-                                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                                self.day=date
-                                print(self.day)
-                            }){
-                                Text("30")
-                                    .hidden()
-                                    .padding(8)
-                                    .background(Color("Auxillary1"))
-                                    .clipShape(Circle())
-                                    .padding(.vertical, 4)
-                                    .overlay(
-                                        Text(String(self.calendar.component(.day, from: date))))
-                                    .foregroundColor(Color.black)
-                            }
-                        }*/
-                    
-                }
+            Button(action: {
+                self.showCurAss=true
+                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+                self.day=date
+                print(self.day)
+            }){
+                Text("30")
+                    .hidden()
+                    .padding(8)
+                    .background(Color("Auxillary1"))
+                    .clipShape(Circle())
+                    .padding(.vertical, 4)
+                    .overlay(
+                        Text(String(self.calendar.component(.day, from: date))))
+                    .foregroundColor(Color.black)
             }
+            /*
+             ForEach(self.curAssignments, id: \.id){ ass in
+             Group{
+             if self.calendar.compare(ass.dueDate, to: date, toGranularity: .day) == .orderedSame {
+             Button(action: {
+             self.showCurAss=true
+             self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+             self.day=date
+             print(self.day)
+             }){
+             Text("30")
+             .hidden()
+             .padding(8)
+             .background(Color("background"))
+             .clipShape(Circle())
+             .padding(.vertical, 4)
+             .overlay(
+             Text(String(self.calendar.component(.day, from: date))))
+             .foregroundColor(Color.black)
+             
+             }
+             } *//*else {
+             Button(action: {
+             self.showCurAss=true
+             self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+             self.day=date
+             print(self.day)
+             }){
+             Text("30")
+             .hidden()
+             .padding(8)
+             .background(Color("Auxillary1"))
+             .clipShape(Circle())
+             .padding(.vertical, 4)
+             .overlay(
+             Text(String(self.calendar.component(.day, from: date))))
+             .foregroundColor(Color.black)
+             }
+             }*/
         }
     }
 }

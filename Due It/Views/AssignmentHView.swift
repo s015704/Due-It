@@ -10,10 +10,10 @@ import SwiftUI
 
 struct AssignmentHView: View {
     
-    @State var dailyWorkingTime : Double
-    @State var curAssignments : [Assignment]
-    @State var weekWork : [[(index: Int, dailyTime: Double)]]
-    var day1 : [(index: Int, dailyTime: Double)] {
+    @Binding var dailyWorkingTime : Double
+    @Binding var curAssignments : [Assignment]
+    @Binding var weekWork : [[(index: Int, dailyTime: Double)]]
+    var today : [(index: Int, dailyTime: Double)] {
         weekWork[0]
     }
     
@@ -25,7 +25,11 @@ struct AssignmentHView: View {
                 Button(action: {
                     
                 }){
-                    Text(curAssignments[day1[0].index].name)
+                    if curAssignments.count != 0 && today[0].index != -1 {
+                        Text("\(curAssignments[today[0].index].name) \(today[0].dailyTime)")
+                    } else {
+                        Text("")
+                    }
                 }
             }
         }
@@ -52,7 +56,7 @@ struct AssignmentHView: View {
 
 struct AssignmentHView_Previews: PreviewProvider {
     static var previews: some View {
-        AssignmentHView(dailyWorkingTime: 0, curAssignments: [], weekWork: [[(index: 0, dailyTime: 0.2)]])
+        AssignmentHView(dailyWorkingTime: Binding.constant(0), curAssignments: Binding.constant([]), weekWork: Binding.constant([[(index: 0, dailyTime: 0.2)]]))
     }
 }
 

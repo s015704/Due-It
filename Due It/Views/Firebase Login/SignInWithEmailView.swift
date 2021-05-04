@@ -12,7 +12,7 @@ import FirebaseAuth
 struct SignInWithEmailView: View {
     
     @EnvironmentObject var userInfo: UserInfo
-    @State var user: UserViewModel = UserViewModel()
+    @Binding var user: UserViewModel
     @Binding var showSheet: Bool
     @Binding var action: LogInView.Action?
     
@@ -68,6 +68,6 @@ struct SignInWithEmailView: View {
 
 struct SignInWithEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInWithEmailView(showSheet: .constant(false), action: .constant(.signUp))
+        SignInWithEmailView(user: Binding.constant(UserViewModel()), showSheet: .constant(false), action: .constant(.signUp))
     }
 }

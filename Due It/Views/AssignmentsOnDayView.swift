@@ -14,7 +14,7 @@ struct AssignmentsOnDayView: View {
     @Environment(\.calendar) var calendar
     @State var clickedDay:String
     @State var day:Date
-    @State var curAssignments:[Assignment]
+    @Binding var curAssignments:[Assignment]
     
     var body: some View {
         NavigationView{
@@ -37,6 +37,6 @@ struct AssignmentsOnDayView: View {
 
 struct AssignmentsOnDayView_Previews: PreviewProvider {
     static var previews: some View {
-        AssignmentsOnDayView(clickedDay: "", day: Date(), curAssignments:[Assignment]())
+        AssignmentsOnDayView(clickedDay: "", day: Date(), curAssignments: Binding.constant([Assignment]()))
     }
 }
