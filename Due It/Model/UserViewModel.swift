@@ -9,11 +9,13 @@
 import Foundation
 
 struct UserViewModel {
+    
     var email: String = ""
     var password: String = ""
     var fullname: String = ""
     var confirmPassword: String = ""
-    var curAssignments: [Assignment] = [Assignment]()
+    var curAssignments: [Assignment]=[Assignment]()
+
     
     // MARK: - Validation Checks
     

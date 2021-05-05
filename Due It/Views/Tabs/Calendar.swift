@@ -122,6 +122,15 @@ struct MonthView<DateView>: View where DateView: View {
             if showHeader {
                 header
             }
+            HStack {
+                Text("S").padding(.leading, 27)
+                Text("M").padding(.leading, 28)
+                Text("T").padding(.leading, 27)
+                Text("W").padding(.leading, 28)
+                Text("T").padding(.leading, 27)
+                Text("F").padding(.leading, 28)
+                Text("S").padding(.leading, 27)
+            }.font(.footnote).padding(.trailing, 35).padding(.bottom, 10)
             ForEach(weeks, id: \.self) { week in
                 WeekView(week: week, content: self.content)
             }
@@ -160,6 +169,7 @@ struct CalendarView<DateView>: View where DateView: View {
 }
 
 struct RootView: View {
+    
     @Environment(\.calendar) var calendar
     @Binding var curAssignments : [Assignment]
     @Binding var showCurAss: Bool
@@ -167,11 +177,22 @@ struct RootView: View {
     @Binding var day : Date
     @State var color : String = ""
     
+    private var dueDates : [String] {
+        var arr : [String] = []
+        for i in 0..<curAssignments.count {
+            arr+=[splitDate(curAssignments[i].dueDate)]
+        }
+        return arr
+    }
+    
+    
+    
     private var startIntervalDate : Date {
         let components : DateComponents = calendar.dateComponents([.year, .month], from: Date())
         let d = calendar.date(from: components)
         return d!
     }
+    
     private var endIntervalDate : Date {
         var components : DateComponents = calendar.dateComponents([.year, .month], from: Date())
         components.year! += 1
@@ -179,69 +200,58 @@ struct RootView: View {
         return d!
     }
     
+    
+    
     private var dInterval: DateInterval {
         DateInterval(start: startIntervalDate, end: endIntervalDate)
     }
+    
     var body: some View {
         CalendarView(interval: dInterval) { date in
-                Button(action: {
-                    self.showCurAss=true
-                    self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                    self.day=date
-                    print(self.day)
-                }){
-                    Text("30")
-                        .hidden()
-                        .padding(8)
-                        .background(Color("Auxillary1"))
-                        .clipShape(Circle())
-                        .padding(.vertical, 4)
-                        .overlay(
-                            Text(String(self.calendar.component(.day, from: date))))
-                        .foregroundColor(Color.black)
-                }
-            
-                ForEach(self.curAssignments, id: \.id){ ass in
-                    Group{
-                        if self.calendar.compare(ass.dueDate, to: date, toGranularity: .day) == .orderedSame {
-                            Button(action: {
-                                self.showCurAss=true
-                                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                                self.day=date
-                                print(self.day)
-                            }){
-                                Text("30")
-                                    .hidden()
-                                    .padding(8)
-                                    .background(Color("background"))
-                                    .clipShape(Circle())
-                                    .padding(.vertical, 4)
-                                    .overlay(
-                                        Text(String(self.calendar.component(.day, from: date))))
-                                    .foregroundColor(Color.black)
-                                
-                            }
-                        } /*else {
-                            Button(action: {
-                                self.showCurAss=true
-                                self.clickedDay="\(self.calendar.component(.month, from:date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
-                                self.day=date
-                                print(self.day)
-                            }){
-                                Text("30")
-                                    .hidden()
-                                    .padding(8)
-                                    .background(Color("Auxillary1"))
-                                    .clipShape(Circle())
-                                    .padding(.vertical, 4)
-                                    .overlay(
-                                        Text(String(self.calendar.component(.day, from: date))))
-                                    .foregroundColor(Color.black)
-                            }
-                        }*/
-                    
-                }
+            Button(action: {
+                self.showCurAss=true
+                self.clickedDay="\(self.calendar.component(.month, from: date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
+                self.day = date
+            }){
+                Text("30")
+                    .hidden()
+                    .padding(8)
+                    //.background(Color(self.dueDates.contains(self.getDate(self.splitDate(date))) ? "background" : "Auxillary1"))
+                    .background(Color(self.dueDates.contains(self.splitDate(date)) ? "highlight" : "Auxillary1"))
+                    .clipShape(Circle())
+                    .padding(.vertical, 4)
+                    .overlay(
+                        Text(String(self.calendar.component(.day, from: date))))
+                    .foregroundColor(Color.black)
             }
         }
     }
+    
+    
+    func getDate(_ strDate: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        let theDate = dateFormatter.date(from: strDate)
+        return theDate?.dayofTheWeek ?? ""
+        
+    }
+    
+    
+    
+    // Splits date from "2020-01-01 05:00:00 +0000" to simply "2020-01-01"
+    
+    func splitDate(_ date: Date) -> String {
+        
+        let words = date.description.components(separatedBy: " ")
+        let firstWord = words[0]
+        return firstWord
+        
+    }
+    
+    
+    
 }
+
+

@@ -11,7 +11,7 @@ import FirebaseAuth
 
 struct ForgotPasswordView: View {
     
-    @State var user: UserViewModel = UserViewModel()
+    @Binding var user: UserViewModel
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -47,6 +47,6 @@ struct ForgotPasswordView: View {
 
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView()
+        ForgotPasswordView(user: Binding.constant(UserViewModel()))
     }
 }
