@@ -42,8 +42,6 @@ struct HomeView: View {
         }
     }
     
-    
-    
     // Calculates the days between 2 dates
     func daysBetween(_ start: Date, _ end: Date) -> Int {
         return Calendar.current.dateComponents([.day], from: start, to: end).day!
@@ -59,15 +57,17 @@ struct HomeView: View {
         let tomorrow = Calendar.current.date(byAdding: addComponents, to: Date())
         
         for i in 0..<curAssignments.count {
+            print(curAssignments[i].name)
+            print(curAssignments[i].timeLeft)
             if daysBetween(date, curAssignments[i].dueDate)>0&&curAssignments[i].timeLeft>0.01 {
                 curAssignments[i].timePerDay = curAssignments[i].timeLeft/(Double(daysBetween(date, curAssignments[i].dueDate))+1)
                 curAssignments[i].timePerDay = ((curAssignments[i].timePerDay*12).rounded(.up))/12    // intervals by 5 minutes
                 arr+=[(index: i, dailyTime: curAssignments[i].timePerDay)]
-            } else if self.calendar.compare(curAssignments[i].dueDate, to: tomorrow!, toGranularity: .day) == .orderedSame/*curAssignments[i].dueDate==tomorrow*/ {
+            } else if self.calendar.compare(curAssignments[i].dueDate, to: tomorrow!, toGranularity: .day) == .orderedSame{
                 curAssignments[i].timePerDay = curAssignments[i].timeLeft
                 arr+=[(index: i, dailyTime: curAssignments[i].timePerDay)]
             } else {
-                curAssignments[i].complete()
+                curAssignments.remove(at: i)
             }
         }
         
@@ -83,31 +83,35 @@ struct HomeView: View {
         
         // Doles out assignment time based on the working time for that day
         var totalTime : Double = 0
-        if arr.count == 0 {
-            arrReturn+=[(-1, 0)]
-        } else if dailyWorkingTime <= arr[0].dailyTime {    // if the dailyWorkingTime is less than the daily time required for the first assignment
-            totalTime = dailyWorkingTime    // fills the dailyWorkingTime completely with the one assignment due soonest
-            arrReturn+=[(arr[0].index, arr[0].dailyTime)]
-            curAssignments[arr[0].index].timeLeft-=dailyWorkingTime   // takes away that much time left for the first assignment !!!!!!
-        } else {    // if there's time for this first assignment's daily time and possibly more
-            var k = 0
-            while totalTime+arr[k].dailyTime < dailyWorkingTime {   // adds in curAssignments' daily time until can't fit a full one
-                arrReturn+=[(arr[k].index, arr[k].dailyTime)]
-                totalTime+=arr[k].dailyTime
-                curAssignments[arr[k].index].timeLeft-=arr[k].dailyTime    // subtracts the daily time from that assignment's time left
-                k+=1
+        if arr.count != 0{
+            if arr.count == 0 {
+                arrReturn+=[(-1, 0)]
+            } else if dailyWorkingTime <= arr[0].dailyTime {    // if the dailyWorkingTime is less than the daily time required for the first assignment
+                totalTime = dailyWorkingTime    // fills the dailyWorkingTime completely with the one assignment due soonest
+                arrReturn+=[(arr[0].index, arr[0].dailyTime)]
+                curAssignments[arr[0].index].timeLeft-=dailyWorkingTime   // takes away that much time left for the first assignment !!!!!!
+            } else {    // if there's time for this first assignment's daily time and possibly more
+                var k = 0
+                while k<arr.count && totalTime+arr[k].dailyTime < dailyWorkingTime {   // adds in curAssignments' daily time until can't fit a full one
+                    arrReturn+=[(arr[k].index, arr[k].dailyTime)]
+                    totalTime+=arr[k].dailyTime
+                    curAssignments[arr[k].index].timeLeft-=arr[k].dailyTime    // subtracts the daily time from that assignment's time left
+                    k+=1
+                    
+                    print("yes")
+                }
+                k-=1
+                arrReturn+=[(arr[k].index, (Double(dailyWorkingTime)-totalTime))] // adds in enough of next assignment to fill up daily working time
+                curAssignments[arr[k].index].timeLeft-=(Double(dailyWorkingTime)-totalTime)
             }
-            arrReturn+=[(arr[k].index, (Double(dailyWorkingTime)-totalTime))] // adds in enough of next assignment to fill up daily working time
-            curAssignments[arr[k].index].timeLeft-=(Double(dailyWorkingTime)-totalTime)
-        }
-        
-        // Sometimes with decimals, the curAssignments might have 0.000024 hours left or something like that so this just officially changes it to 0 if that happens
-        for j in 0..<curAssignments.count {
+            
+            // Sometimes with decimals, the curAssignments might have 0.000024 hours left or something like that so this just officially changes it to 0 if that happens
+            for j in 0..<curAssignments.count {
             if curAssignments[j].timeLeft<0.01 {
-                curAssignments[j].complete()
+            curAssignments.remove(at: j)
+            }
             }
         }
-        
         var sum : Double = 0
         for j in 0..<arrReturn.count {
             sum += arrReturn[j].dailyTime
@@ -129,9 +133,9 @@ struct HomeView: View {
             var addComponents = DateComponents()
             addComponents.day = i
             let futureDay = Calendar.current.date(byAdding: addComponents, to: Date())
-          //  let n = getWorkForDay(futureDay!)
-           // if n[0].0 != -1 {
-                weekWork.append(getWorkForDay(futureDay!))
+            //  let n = getWorkForDay(futureDay!)
+            // if n[0].0 != -1 {
+            weekWork.append(getWorkForDay(futureDay!))
             //}
         }
         

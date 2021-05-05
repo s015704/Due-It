@@ -14,8 +14,6 @@ struct AddAssignmentView: View {
     @Binding var curAssignments:[Assignment]
     @State var assignment: Assignment = Assignment()
     @Environment(\.presentationMode) var presentationMode
-    var ref: DatabaseReference! = Database.database().reference()
-    let uid = Auth.auth().currentUser?.uid
     @State private var estHours : Double = 0
     @State private var estMinutes : Double = 0
 
@@ -80,8 +78,8 @@ struct AddAssignmentView: View {
                 Spacer()
                 Button(action:{
                     self.assignment.estTime = self.estHours+self.estMinutes/60
+                    self.assignment.timeLeft = self.assignment.estTime
                     self.curAssignments.append(self.assignment)
-                    self.ref.child("users").child(self.uid!).setValue("curAssignments")
                     self.presentationMode.wrappedValue.dismiss()
                 }){
                     HStack {

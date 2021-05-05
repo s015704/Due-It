@@ -16,17 +16,27 @@ struct AssignmentHView: View {
     var today : [(index: Int, dailyTime: Double)] {
         weekWork[0]
     }
+    var weekdays : [Date] {
+        var arr : [Date] = []
+        for i in 0..<7 {
+            var addComponents = DateComponents()
+            addComponents.day = i
+            arr+=[Calendar.current.date(byAdding: addComponents, to: Date())!]
+        }
+        return arr
+    }
     
     var body: some View {
         List {
-            Text(getDate(splitDate(Date())))
+            
+            Text(getDate(splitDate(weekdays[0])))
                 .font(.largeTitle)
-            List {
+            List(0..<weekWork[0].count) {i in
                 Button(action: {
-                    
+                    print(self.weekWork[0])
                 }){
-                    if curAssignments.count != 0 && today[0].index != -1 {
-                        Text("\(curAssignments[today[0].index].name) \(today[0].dailyTime)")
+                    if self.curAssignments.count != 0 && self.today[0].index != -1 {
+                        Text("\(self.curAssignments[self.today[0].index].name) \(self.today[0].dailyTime)")
                     } else {
                         Text("")
                     }

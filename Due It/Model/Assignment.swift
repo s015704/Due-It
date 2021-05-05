@@ -45,12 +45,7 @@ class Assignment {
         self.isCompleted = isCompleted
     }
     
-    func complete() {
-        self.estTime = 0
-        self.timeLeft = 0
-        self.timePerDay = 0
-        isCompleted = true
-    }
+
     
     func isEmpty(_field:String) -> Bool {
         return _field.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
