@@ -14,7 +14,7 @@ import FirebaseDatabase
 struct SettingsView: View {
     
     @EnvironmentObject var userInfo: UserInfo
-    @Binding var user: UserViewModel
+    @State var user: UserViewModel
     @Binding var dailyWorkingTime : Double
     
     var body: some View {
@@ -60,6 +60,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(user: Binding.constant(UserViewModel()), dailyWorkingTime: Binding.constant(0.0))
+        SettingsView(user: UserViewModel(), dailyWorkingTime: Binding.constant(0.0))
     }
 }

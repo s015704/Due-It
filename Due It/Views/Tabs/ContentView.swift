@@ -13,8 +13,8 @@ struct ContentView: View {
     @EnvironmentObject var userInfo : UserInfo
     @State var showAAV = false
     @State var user: UserViewModel = UserViewModel()
+    @State var weekWork:[[(index: Int, dailyTime: Double)]] = [[(index: Int, dailyTime: Double)]]()
     @State var dailyWorkingTime: Double = 3
-    //@State var curAssignments = [Assignment]()
     @State var showCurAss=false
     @State var clickedDay=""
     @State var day=Date()
@@ -29,20 +29,21 @@ struct ContentView: View {
             } else {
                 TabView {
                     RootView(curAssignments: self.$user.curAssignments, showCurAss: $showCurAss, clickedDay: $clickedDay, day:$day ).sheet(isPresented: $showCurAss) {
-                        AssignmentsOnDayView(clickedDay: self.clickedDay, day: self.day, curAssignments:self.$user.curAssignments)
+                        AssignmentsOnDayView(clickedDay: self.clickedDay, day: self.day, curAssignments: self.$user.curAssignments)
                     }
                         .tabItem({
                             Image(systemName: "calendar")
                             Text("Calendar")
                         }).tag(0)
-                    HomeView(showAAV: $showAAV, user: self.$user, dailyWorkingTime: self.$dailyWorkingTime, curAssignments: self.$user.curAssignments).sheet(isPresented: $showAAV) {
-                        AddAssignmentView(curAssignments: self.$user.curAssignments)
+                    HomeView(showAAV: $showAAV, dailyWorkingTime: self.$dailyWorkingTime, curAssignments: self.$user.curAssignments, weekWork: self.$weekWork).sheet(isPresented: $showAAV) {
+                        AddAssignmentView(curAssignments: self.$user.curAssignments, dailyWorkingTime: self.$dailyWorkingTime, weekWork: self.$weekWork)
+
                     }
                     .tabItem({
                         Image(systemName: "house")
                         Text("Assignments")
                     }).tag(1)
-                    SettingsView(user: self.$user, dailyWorkingTime: self.$dailyWorkingTime)
+                    SettingsView(user: self.user, dailyWorkingTime: self.$dailyWorkingTime)
                         .tabItem({
                             Image(systemName: "gear")
                             Text("Settings")
