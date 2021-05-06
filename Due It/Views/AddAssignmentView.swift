@@ -25,8 +25,6 @@ struct AddAssignmentView: View {
         return Calendar.current.date(byAdding: components, to: Date())!
     }
     
-    
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -38,9 +36,9 @@ struct AddAssignmentView: View {
                             .padding(.bottom, 5)
                         TextField("Assignment Name", text: self.$assignment.name)
                             .autocapitalization(.words)
-                        //if !assignment.validNameText.isEmpty {
-                        //  Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
-                        //}
+                        if !assignment.validNameText.isEmpty {
+                         Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
+                        }
                         TextField("Description", text: self.$assignment.description)
                         TextField("Course", text: self.$assignment.course)
                             .autocapitalization(.words)
@@ -62,8 +60,6 @@ struct AddAssignmentView: View {
                         Stepper(value: $estMinutes, in: 0...60, step: 5) {
                             Text("Minutes: \(estMinutes, specifier: "%g")")
                         }.padding([.leading, .trailing], 45)
-                        //TimeStepperView(assignment: assignment, type: .hour ) // I don't know how to store this time in estTime
-                        //TimeStepperView(assignment: assignment, type: .minute)
                     }.padding(.top, 15)
                     
                     VStack {
@@ -88,7 +84,7 @@ struct AddAssignmentView: View {
                 Button(action:{
                     self.assignment.estTime = self.estHours+self.estMinutes/60
                     self.assignment.timeLeft = self.assignment.estTime
-                    
+
                     var cont = true
                     var ind = 0
                     if self.curAssignments.count > 0 {
@@ -106,11 +102,13 @@ struct AddAssignmentView: View {
                     self.presentationMode.wrappedValue.dismiss()
 
                 }){
-                    HStack {
-                        Text("SAVE")
-                            .font(.title)
-                            .foregroundColor(Color("Auxillary3"))
-                    }
+                    Text("SAVE")
+                        .frame(width: 120, height: 50)
+                        .background(Color("Auxillary2"))
+                        .cornerRadius(25)
+                        .clipShape(Rectangle())
+                        .font(.title)
+                        .foregroundColor(Color.black)
                 }
                 Spacer()
             }.padding(.top)
@@ -165,18 +163,13 @@ struct AddAssignmentView: View {
                 if dailyWorkingTime <= arr[0].dailyTime {    // if the dailyWorkingTime is less than the daily time required for the first assignment
                     totalTime = dailyWorkingTime    // fills the dailyWorkingTime completely with the one assignment due soonest
                     arrReturn+=[(arr[0].index, arr[0].dailyTime)]
-                    if curAssignments[arr[0].index].workDoneToday{
                     curAssignments[arr[0].index].timeLeft-=dailyWorkingTime   // takes away that much time left for the first assignment !!!!!!
-                    }
                 } else {    // if there's time for this first assignment's daily time and possibly more
                     var k = 0
                     while k<arr.count && totalTime+arr[k].dailyTime <= dailyWorkingTime {   // adds in curAssignments' daily time until can't fit a full one
                         arrReturn+=[(arr[k].index, arr[k].dailyTime)]
                         totalTime+=arr[k].dailyTime
-                        if curAssignments[arr[k].index].workDoneToday{
-                        curAssignments[arr[k].index].timeLeft-=dailyWorkingTime   // takes away that much time left for the first assignment !!!!!!
-                        }
-    // subtracts the daily time from that assignment's time left
+                        curAssignments[arr[k].index].timeLeft-=arr[k].dailyTime    // subtracts the daily time from that assignment's time left
                         k+=1
                     }
                     if k<arr.count{
@@ -234,21 +227,4 @@ struct AddAssignmentView_Previews: PreviewProvider {
     }
 }
 
-/* VStack(spacing: 20 ) {
- Button(action: {
- Auth.auth().createUser(withEmail: self.user.email, password: self.user.password, completion: { (user, error) in
- self.userInfo.configureFirebaseStateDidChange()
- self.presentationMode.wrappedValue.dismiss()
- })
- }) {
- Text("Register")
- .frame(width: 200)
- .padding(.vertical, 15)
- .background(Color.green)
- .cornerRadius(8)
- .foregroundColor(.white)
- .opacity(user.isSignInComplete ? 1 : 0.75)
- }
- .disabled(!user.isSignInComplete)
- Spacer()
- }.padding()*/
+

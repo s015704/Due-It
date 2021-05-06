@@ -15,7 +15,6 @@ struct UserViewModel {
     var fullname: String = ""
     var confirmPassword: String = ""
     var curAssignments: [Assignment]=[Assignment]()
-
     
     // MARK: - Validation Checks
     

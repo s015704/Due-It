@@ -21,6 +21,7 @@ struct weekDay: Identifiable{
     let day: Date
 }
 struct AssignmentHView: View {
+
     @Environment(\.calendar) var calendar
     @Binding var dailyWorkingTime : Double
     @Binding var curAssignments : [Assignment]
@@ -45,9 +46,11 @@ struct AssignmentHView: View {
             arr+=[Calendar.current.date(byAdding: addComponents, to: Date())!]
         }
         return arr
+
     }
     
     var body: some View {
+
         List(weekdays, id:\.self) { weekDay in
             Text(self.getDate(self.splitDate(weekDay)).prefix(3))
                 .font(.largeTitle).padding(.init(top: 50, leading: 0, bottom: 50, trailing: 0))

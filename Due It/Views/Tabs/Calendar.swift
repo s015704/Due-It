@@ -212,6 +212,7 @@ struct RootView: View {
                 self.showCurAss=true
                 self.clickedDay="\(self.calendar.component(.month, from: date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
                 self.day = date
+
             }){
                 Text("30")
                     .hidden()
@@ -224,6 +225,7 @@ struct RootView: View {
                         Text(String(self.calendar.component(.day, from: date))))
                     .foregroundColor(Color.black)
             }
+            
         }
     }
     
@@ -238,19 +240,13 @@ struct RootView: View {
         
     }
     
-    
-    
     // Splits date from "2020-01-01 05:00:00 +0000" to simply "2020-01-01"
-    
     func splitDate(_ date: Date) -> String {
-        
         let words = date.description.components(separatedBy: " ")
         let firstWord = words[0]
         return firstWord
-        
     }
-    
-    
+
     
 }
 

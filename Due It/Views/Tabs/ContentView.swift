@@ -28,10 +28,8 @@ struct ContentView: View {
                 LogInView(user: self.$user)
             } else {
                 TabView {
-
                     RootView(curAssignments: self.$user.curAssignments, showCurAss: $showCurAss, clickedDay: $clickedDay, day:$day ).sheet(isPresented: $showCurAss) {
                         AssignmentsOnDayView(clickedDay: self.clickedDay, day: self.day, curAssignments: self.$user.curAssignments)
-
                     }
                         .tabItem({
                             Image(systemName: "calendar")
@@ -39,6 +37,7 @@ struct ContentView: View {
                         }).tag(0)
                     HomeView(showAAV: $showAAV, dailyWorkingTime: self.$dailyWorkingTime, curAssignments: self.$user.curAssignments, weekWork: self.$weekWork).sheet(isPresented: $showAAV) {
                         AddAssignmentView(curAssignments: self.$user.curAssignments, dailyWorkingTime: self.$dailyWorkingTime, weekWork: self.$weekWork)
+
                     }
                     .tabItem({
                         Image(systemName: "house")

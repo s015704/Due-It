@@ -13,12 +13,20 @@ import FirebaseDatabase
 
 struct HomeView: View {
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     @Binding var showAAV: Bool
     @Binding var dailyWorkingTime: Double
     @Binding var curAssignments : [Assignment]
     @Binding var weekWork:[[(index: Int, dailyTime: Double)]]
     @EnvironmentObject var userInfo : UserInfo
     @Environment(\.calendar) var calendar
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     
     var body: some View {
         ZStack{
@@ -50,6 +58,10 @@ struct HomeView: View {
                     }.foregroundColor(Color("highlight")).padding(30)
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         }
     }
     
@@ -94,6 +106,10 @@ struct HomeView: View {
         // Doles out assignment time based on the working time for that day
         var totalTime : Double = 0
         if arr.count != 0{
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             if dailyWorkingTime <= arr[0].dailyTime {    // if the dailyWorkingTime is less than the daily time required for the first assignment
                 totalTime = dailyWorkingTime    // fills the dailyWorkingTime completely with the one assignment due soonest
                 arrReturn+=[(arr[0].index, arr[0].dailyTime)]
@@ -114,9 +130,17 @@ struct HomeView: View {
             
             // Sometimes with decimals, the curAssignments might have 0.000024 hours left or something like that so this just officially changes it to 0 if that happens
             for j in 0..<curAssignments.count {
+<<<<<<< HEAD
                 if curAssignments[j].timeLeft<0.01 {
                     //curAssignments.remove(at: j)
                 }
+=======
+
+                if curAssignments[j].timeLeft<0.01 {
+                    //curAssignments.remove(at: j)
+                }
+
+>>>>>>> master
             }
         }
         var sum : Double = 0
@@ -144,9 +168,17 @@ struct HomeView: View {
             weekWork.append(getWorkForDay(futureDay!))
             //}
         }
+<<<<<<< HEAD
         print(weekWork)
         
         self.weekWork=weekWork
+=======
+
+        print(weekWork)
+        
+        self.weekWork=weekWork
+
+>>>>>>> master
     }
     
 }
@@ -154,6 +186,12 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
+<<<<<<< HEAD
         HomeView(showAAV: .constant(true), dailyWorkingTime: Binding.constant(0), curAssignments: Binding.constant([]), weekWork: Binding.constant([[(index: Int, dailyTime: Double)]]()) )
+=======
+
+        HomeView(showAAV: .constant(true), dailyWorkingTime: Binding.constant(0), curAssignments: Binding.constant([]), weekWork: Binding.constant([[(index: Int, dailyTime: Double)]]()) )
+
+>>>>>>> master
     }
 }
