@@ -2,9 +2,9 @@
 //  ContentView.swift
 //  Due It
 //
-//  Created by Annika Naveen (student LM) on 3/11/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
-//
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
+// Single source of truth, everything is passed through the content view
 
 import SwiftUI
 
@@ -27,6 +27,7 @@ struct ContentView: View {
             } else if userInfo.isUserAuthenticated == .signedOut {
                 LogInView(user: self.$user)
             } else {
+                //Our Tab view to switch screens
                 TabView {
                     RootView(curAssignments: self.$user.curAssignments, showCurAss: $showCurAss, clickedDay: $clickedDay, day:$day ).sheet(isPresented: $showCurAss) {
                         AssignmentsOnDayView(clickedDay: self.clickedDay, day: self.day, curAssignments: self.$user.curAssignments)
@@ -43,7 +44,7 @@ struct ContentView: View {
                         Image(systemName: "house")
                         Text("Assignments")
                     }).tag(1)
-                    SettingsView(user: self.user, dailyWorkingTime: self.$dailyWorkingTime)
+                    SettingsView(user: self.user, dailyWorkingTime: self.$dailyWorkingTime, weekWork: self.$weekWork, curAssignments: self.$user.curAssignments)
                         .tabItem({
                             Image(systemName: "gear")
                             Text("Settings")

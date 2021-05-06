@@ -2,7 +2,7 @@
 //  SignUpView.swift
 //  Signin With Apple
 //
-//  Created by Stewart Lynch on 2020-03-19.
+//  Created by Stewart Lynch on 2020-03-19. Modified by Workflow Team
 //  Copyright © 2020 CreaTECH Solutions. All rights reserved.
 //
 

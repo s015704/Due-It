@@ -2,7 +2,7 @@
 //  SignInWithEmailView.swift
 //  Signin With Apple
 //
-//  Created by Stewart Lynch on 2020-03-19.
+//  Created by Stewart Lynch on 2020-03-19. Modified by Workflow Team
 //  Copyright © 2020 CreaTECH Solutions. All rights reserved.
 //
 
@@ -18,6 +18,8 @@ struct SignInWithEmailView: View {
     
     var body: some View {
         VStack {
+            //Our Login Interface with text fields and buttons
+            Image("logo")
             TextField("Email Address",
                       text: self.$user.email)
                 .autocapitalization(.none)

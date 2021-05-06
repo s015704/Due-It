@@ -2,10 +2,9 @@
 //  AssignmentsOnDayView.swift
 //  Due It
 //
-//  Created by Alexander Bullard (student LM) on 4/22/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
-//
-
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
+//  This shows your assignments per day
 import SwiftUI
 
 struct AssignmentsOnDayView: View {

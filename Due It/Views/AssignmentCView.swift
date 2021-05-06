@@ -2,9 +2,9 @@
 //  AssignmentCView.swift
 //  Due It
 //
-//  Created by Alexander Bullard (student LM) on 4/28/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
-//
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
+// This shows the assignmens in our callander after clicking on the due date
 
 import SwiftUI
 
@@ -16,10 +16,10 @@ struct AssignmentCView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .stroke(lineWidth: 8)
+                .stroke(lineWidth: 10)
                 .frame(width: UIScreen.main.bounds.width-50, height: 200, alignment: .center)
                 .cornerRadius(10)
-                .foregroundColor(auxColor==1 ? Color("Auxillary1") : Color("Auxillary2"))
+                .foregroundColor(Color("Auxillary1"))
             VStack {
                 Text(assignment.name)
                     .font(.largeTitle)
@@ -42,14 +42,26 @@ struct AssignmentCView: View {
                     }
                 }
                 HStack {
+                    Text("Priority Level: ")
+                        .font(.caption)
+                        .bold()
+                    Group {
+                        if assignment.priority == 0 {
+                            Text("Low")
+                        } else if assignment.priority == 1 {
+                            Text("Med")
+                        } else if assignment.priority == 2 {
+                            Text("High")
+                        }
+                    }.font(.caption)
+                        .padding(.trailing, 20)
                     Text("Completion Status: ")
                         .font(.caption)
-                    Group {
-                        if assignment.isCompleted {
-                            Image(systemName: "checkmark.square.fill")
-                        } else {
-                            Image(systemName: "xmark.rectangle")
-                        }
+                        .bold()
+                    if assignment.isCompleted {
+                        Image(systemName: "checkmark.square.fill")
+                    } else {
+                        Image(systemName: "xmark.rectangle")
                     }
                 }
             }

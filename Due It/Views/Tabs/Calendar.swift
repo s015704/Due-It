@@ -1,5 +1,6 @@
 import SwiftUI
-
+//Made by github user "Mecid" edited by Workflow Team
+//Displays a beautiful blue calander that is clickable
 fileprivate extension DateFormatter {
     
     static var month: DateFormatter {
@@ -212,7 +213,6 @@ struct RootView: View {
                 Text("30")
                     .hidden()
                     .padding(8)
-                    //.background(Color(self.dueDates.contains(self.getDate(self.splitDate(date))) ? "background" : "Auxillary1"))
                     .background(Color(self.dueDates.contains(self.splitDate(date)) ? "highlight" : "Auxillary1"))
                     .clipShape(Circle())
                     .padding(.vertical, 4)

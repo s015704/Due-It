@@ -1,10 +1,10 @@
 //
 //  UserInfo.swift
-//  FireDrill
+// 
 //
-//  Created by Annika Naveen (student LM) on 2/10/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
-//
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
+// Firebase work imported from firedrill
 
 import Foundation
 import FirebaseAuth

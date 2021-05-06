@@ -2,10 +2,9 @@
 //  Assignment.swift
 //  Due It
 //
-//  Created by Annika Naveen (student LM) on 4/6/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
-//
-
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
+//  This is the foundational file for an assignments. All variables are initialized here and mandated text fields are checked.
 import Foundation
 
 class Assignment {

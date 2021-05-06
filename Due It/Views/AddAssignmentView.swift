@@ -2,9 +2,9 @@
 //  AddAssignmentView.swift
 //  Due It
 //
-//  Created by Annika Naveen (student LM) on 4/6/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
-//
+//  Created by Workflow Team on 4/6/21.
+//  Copyright © Workflow. All rights reserved.
+//This is our interface for adding assignments to your calander, algorithm works once save is clicked
 
 import SwiftUI
 import FirebaseDatabase
@@ -97,26 +97,6 @@ struct AddAssignmentView: View {
                         self.assignment.estTime = self.estHours+self.estMinutes/60
                         self.assignment.timeLeft = self.assignment.estTime
                         self.assignment.timeForNextDay = self.assignment.timeLeft
-                        
-                       /* var cont = true
-                        var ind = 0
-                        if self.curAssignments.count > 0 {
-                            while cont && self.curAssignments.count>ind {
-                                if self.calendar.compare(self.assignment.dueDate, to: self.curAssignments[ind].dueDate, toGranularity: .day) == .orderedAscending {
-                                    cont = false
-                                    self.curAssignments.insert(self.assignment, at: ind)
-                                }
-                                else{
-                                    self.curAssignments.append(self.assignment)
-                                    cont=false
-                                }
-                                ind+=1
-                            }
-                        }
-                        else{
-                            self.curAssignments.append(self.assignment)
-                        }
-                        */
                         self.curAssignments.append(self.assignment)
                         self.getWorkForWeek()
                         self.presentationMode.wrappedValue.dismiss()
@@ -186,7 +166,6 @@ struct AddAssignmentView: View {
         let arr : [(index: Int, dailyTime: Double)] = getAllTimePerDay(date)  // Adds every single assigment with its intended time per day to the array
         var arrReturn : [(index: Int, dailyTime: Double)] = []
         
-        print(arr)
         // Doles out assignment time based on the working time for that day
         var totalTime : Double = 0
         if arr.count != 0{
@@ -235,26 +214,18 @@ struct AddAssignmentView: View {
         return arrReturn
     }
     
-    public func getWorkForWeek() -> () /*[[(Int, Double)]]*/ {
+    public func getWorkForWeek() -> () {
         
         // An array of arrays - ex. at [0], there will be an array of curAssignments and times for today; at [1] there will be an array of curAssignments and times for tomorrow
         var weekWork : [[(index: Int, dailyTime: Double)]] = []
         
-        //var dayWork : [(index: Int, dailyTime: Double)] = []
         for i in 0..<7 {
             var addComponents = DateComponents()
             addComponents.day = i
             let futureDay = Calendar.current.date(byAdding: addComponents, to: Date())
-            //  let n = getWorkForDay(futureDay!)
-            // if n[0].0 != -1 {
             weekWork.append(getWorkForDay(futureDay!))
-            //}
-            
         }
-        
-
-        print(weekWork)
-        
+                
         self.weekWork=weekWork
 
         for i in 0..<curAssignments.count {
@@ -262,10 +233,7 @@ struct AddAssignmentView: View {
         }
     }
     
-    
 }
-
-
 
 
 

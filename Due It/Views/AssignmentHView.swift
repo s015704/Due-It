@@ -2,9 +2,9 @@
 //  AssignmentHView.swift
 //  Due It
 //
-//  Created by Alexander Bullard (student LM) on 4/30/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
-//
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
+// This shows how long you should work on an assignment in the Home view
 
 import SwiftUI
 
@@ -63,7 +63,7 @@ struct AssignmentHView: View {
                             print(self.workDays)
                         }){
                             if self.curAssignments.count != 0 && self.workDays[self.indexOfWeek(weekDay)].work.count != 0 {
-                                Text("\(self.curAssignments[workPiece.part.index].name): \(String(format: "%.0f", workPiece.part.dailyTime.rounded(.down))) hrs \(String(format: "%.0f", (workPiece.part.dailyTime-workPiece.part.dailyTime.rounded(.down))*60)) min")
+                                Text("\(self.curAssignments[workPiece.part.index].name): \(String(format: "%.0f", workPiece.part.dailyTime.rounded(.down))) hrs \(String(format: "%.0f", (workPiece.part.dailyTime-workPiece.part.dailyTime.rounded(.down))*60)) min").foregroundColor(Color("background"))
                             } else {
                                 Text("")
                             }

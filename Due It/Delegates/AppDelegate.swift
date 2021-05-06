@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Due It
 //
-//  Created by Annika Naveen (student LM) on 3/11/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
 //
 
 import UIKit
@@ -11,9 +11,10 @@ import Firebase
 
 
 @UIApplicationMain
+//Our App Delegate implements firebase and provides a basic framework for our app
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+//Implement 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

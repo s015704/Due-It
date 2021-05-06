@@ -2,13 +2,12 @@
 //  SceneDelegate.swift
 //  Due It
 //
-//  Created by Annika Naveen (student LM) on 3/11/21.
-//  Copyright © 2021 Annika Naveen (student LM). All rights reserved.
+//  Created by Workflow Team on 3/11/21.
+//  Copyright © Workflow. All rights reserved.
 //
 
 import UIKit
 import SwiftUI
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
