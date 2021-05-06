@@ -25,8 +25,6 @@ struct AddAssignmentView: View {
         return Calendar.current.date(byAdding: components, to: Date())!
     }
     
-    
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -38,9 +36,9 @@ struct AddAssignmentView: View {
                             .padding(.bottom, 5)
                         TextField("Assignment Name", text: self.$assignment.name)
                             .autocapitalization(.words)
-                        //if !assignment.validNameText.isEmpty {
-                        //  Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
-                        //}
+                        if !assignment.validNameText.isEmpty {
+                         Text(assignment.validNameText).font(.caption).foregroundColor(Color("highlight"))
+                        }
                         TextField("Description", text: self.$assignment.description)
                         TextField("Course", text: self.$assignment.course)
                             .autocapitalization(.words)
@@ -62,8 +60,6 @@ struct AddAssignmentView: View {
                         Stepper(value: $estMinutes, in: 0...60, step: 5) {
                             Text("Minutes: \(estMinutes, specifier: "%g")")
                         }.padding([.leading, .trailing], 45)
-                        //TimeStepperView(assignment: assignment, type: .hour ) // I don't know how to store this time in estTime
-                        //TimeStepperView(assignment: assignment, type: .minute)
                     }.padding(.top, 15)
                     
                     VStack {
@@ -106,11 +102,13 @@ struct AddAssignmentView: View {
                     self.presentationMode.wrappedValue.dismiss()
 
                 }){
-                    HStack {
-                        Text("SAVE")
-                            .font(.title)
-                            .foregroundColor(Color("Auxillary3"))
-                    }
+                    Text("SAVE")
+                        .frame(width: 120, height: 50)
+                        .background(Color("Auxillary2"))
+                        .cornerRadius(25)
+                        .clipShape(Rectangle())
+                        .font(.title)
+                        .foregroundColor(Color.black)
                 }
                 Spacer()
             }.padding(.top)

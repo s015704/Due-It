@@ -55,7 +55,7 @@ class Assignment {
         if !isEmpty(_field: name) {
             return ""
         } else {
-            return "Enter the assignment name"
+            return "You must enter a name for the assignment"
         }
     }
     
