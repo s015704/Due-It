@@ -21,6 +21,8 @@ class Assignment {
     var priority : Double
     var isCompleted : Bool
     var workDoneToday : Bool
+    var timeForNextDay : Double
+    
     init() {
         name = ""
         dueDate = Date()
@@ -29,12 +31,13 @@ class Assignment {
         estTime = 0
         timeLeft = 0
         timePerDay = 0
-        priority = 0
+        priority = 1
         isCompleted = false
         workDoneToday=false
+        timeForNextDay=0
     }
     
-    init(name : String, dueDate : Date, description : String, course : String, estTime : Double, priority : Double, isCompleted : Bool, workDoneToday: Bool) {
+    init(name : String, dueDate : Date, description : String, course : String, estTime : Double, priority : Double, isCompleted : Bool, workDoneToday: Bool, timeForNextDay: Double) {
         self.name = name
         self.dueDate = dueDate
         self.description = description
@@ -45,9 +48,8 @@ class Assignment {
         self.priority = priority
         self.isCompleted = isCompleted
         self.workDoneToday = workDoneToday
+        self.timeForNextDay = timeForNextDay
     }
-    
-
     
     func isEmpty(_field:String) -> Bool {
         return _field.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
@@ -61,11 +63,4 @@ class Assignment {
         }
     }
     
-    var validCourseText: String {
-        if !isEmpty(_field: course) {
-            return ""
-        } else {
-            return "Enter a course"
-        }
-    }
 }

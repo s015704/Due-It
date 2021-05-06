@@ -184,24 +184,17 @@ struct RootView: View {
         }
         return arr
     }
-    
-    
-    
     private var startIntervalDate : Date {
         let components : DateComponents = calendar.dateComponents([.year, .month], from: Date())
         let d = calendar.date(from: components)
         return d!
     }
-    
     private var endIntervalDate : Date {
         var components : DateComponents = calendar.dateComponents([.year, .month], from: Date())
         components.year! += 1
         let d = calendar.date(from: components)
         return d!
     }
-    
-    
-    
     private var dInterval: DateInterval {
         DateInterval(start: startIntervalDate, end: endIntervalDate)
     }
@@ -210,9 +203,11 @@ struct RootView: View {
         CalendarView(interval: dInterval) { date in
             Button(action: {
                 self.showCurAss=true
+                print(self.calendar.timeZone)
+                print(Date())
                 self.clickedDay="\(self.calendar.component(.month, from: date))/\(self.calendar.component(.day, from: date))/\(self.calendar.component(.year, from: date))"
                 self.day = date
-
+                print(self.curAssignments)
             }){
                 Text("30")
                     .hidden()

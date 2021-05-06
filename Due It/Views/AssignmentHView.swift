@@ -21,7 +21,7 @@ struct weekDay: Identifiable{
     let day: Date
 }
 struct AssignmentHView: View {
-
+    
     @Environment(\.calendar) var calendar
     @Binding var dailyWorkingTime : Double
     @Binding var curAssignments : [Assignment]
@@ -43,27 +43,30 @@ struct AssignmentHView: View {
         for i in 0..<7 {
             var addComponents = DateComponents()
             addComponents.day = i
+            addComponents.timeZone = TimeZone(identifier: "America/New_York")
+            addComponents.hour = -4
             arr+=[Calendar.current.date(byAdding: addComponents, to: Date())!]
         }
         return arr
-
+        
     }
     
     var body: some View {
-
-        List(weekdays, id:\.self) { weekDay in
-            Text(self.getDate(self.splitDate(weekDay)).prefix(3))
-                .font(.largeTitle).padding(.init(top: 50, leading: 0, bottom: 50, trailing: 0))
-            if self.curAssignments.count != 0 && self.indexOfWeek(weekDay)<self.workDays.count{
-                List(self.workDays[self.indexOfWeek(weekDay)].work, id:\.id){ workPiece in
-                    Button(action: {
-                        print(self.weekWork)
-                        print(self.workDays)
-                    }){
-                        if self.curAssignments.count != 0 && self.workDays[self.indexOfWeek(weekDay)].work.count != 0 {
-                            Text("\(self.curAssignments[workPiece.part.index].name): \(String(format: "%.0f", workPiece.part.dailyTime.rounded(.down))) hrs \(String(format: "%.0f", (workPiece.part.dailyTime-workPiece.part.dailyTime.rounded(.down))*60)) min")
-                        } else {
-                            Text("")
+        VStack{
+            List(weekdays, id:\.self) { weekDay in
+                Text(self.getDate(self.splitDate(weekDay)).prefix(3))
+                    .font(.largeTitle).padding(.init(top: 50, leading: 0, bottom: 50, trailing: 0))
+                if self.curAssignments.count != 0 && self.indexOfWeek(weekDay)<self.workDays.count{
+                    List(self.workDays[self.indexOfWeek(weekDay)].work, id:\.id){ workPiece in
+                        Button(action: {
+                            print(self.weekWork)
+                            print(self.workDays)
+                        }){
+                            if self.curAssignments.count != 0 && self.workDays[self.indexOfWeek(weekDay)].work.count != 0 {
+                                Text("\(self.curAssignments[workPiece.part.index].name): \(String(format: "%.0f", workPiece.part.dailyTime.rounded(.down))) hrs \(String(format: "%.0f", (workPiece.part.dailyTime-workPiece.part.dailyTime.rounded(.down))*60)) min")
+                            } else {
+                                Text("")
+                            }
                         }
                     }
                 }
