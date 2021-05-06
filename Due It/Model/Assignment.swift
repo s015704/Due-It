@@ -20,7 +20,7 @@ class Assignment {
     var timePerDay : Double
     var priority : Double
     var isCompleted : Bool
-    
+    var workDoneToday : Bool
     init() {
         name = ""
         dueDate = Date()
@@ -31,9 +31,10 @@ class Assignment {
         timePerDay = 0
         priority = 0
         isCompleted = false
+        workDoneToday=false
     }
     
-    init(name : String, dueDate : Date, description : String, course : String, estTime : Double, priority : Double, isCompleted : Bool) {
+    init(name : String, dueDate : Date, description : String, course : String, estTime : Double, priority : Double, isCompleted : Bool, workDoneToday: Bool) {
         self.name = name
         self.dueDate = dueDate
         self.description = description
@@ -43,6 +44,7 @@ class Assignment {
         self.timePerDay = 0
         self.priority = priority
         self.isCompleted = isCompleted
+        self.workDoneToday = workDoneToday
     }
     
 

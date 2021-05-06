@@ -165,13 +165,18 @@ struct AddAssignmentView: View {
                 if dailyWorkingTime <= arr[0].dailyTime {    // if the dailyWorkingTime is less than the daily time required for the first assignment
                     totalTime = dailyWorkingTime    // fills the dailyWorkingTime completely with the one assignment due soonest
                     arrReturn+=[(arr[0].index, arr[0].dailyTime)]
+                    if curAssignments[arr[0].index].workDoneToday{
                     curAssignments[arr[0].index].timeLeft-=dailyWorkingTime   // takes away that much time left for the first assignment !!!!!!
+                    }
                 } else {    // if there's time for this first assignment's daily time and possibly more
                     var k = 0
                     while k<arr.count && totalTime+arr[k].dailyTime <= dailyWorkingTime {   // adds in curAssignments' daily time until can't fit a full one
                         arrReturn+=[(arr[k].index, arr[k].dailyTime)]
                         totalTime+=arr[k].dailyTime
-                        curAssignments[arr[k].index].timeLeft-=arr[k].dailyTime    // subtracts the daily time from that assignment's time left
+                        if curAssignments[arr[k].index].workDoneToday{
+                        curAssignments[arr[k].index].timeLeft-=dailyWorkingTime   // takes away that much time left for the first assignment !!!!!!
+                        }
+    // subtracts the daily time from that assignment's time left
                         k+=1
                     }
                     if k<arr.count{
